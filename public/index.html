@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ProxiedMail - proxy-email provider</title>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+        <meta property="og:title" content="ProxiedMail - proxy-email provider" />
+        <meta property="og:url" content="https://proxiedmail.com" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://proxiedmail.com"/>
+        <meta property="og:description" content="Enter your real email and invent proxy address to get alias at @proxiedmail.com which allows you to receive emails without showing your real email. We will forward emails from proxy-address to your real immediately after sent." />
+        <meta name="description" content="Enter your real email and invent proxy address to get alias at @proxiedmail.com which allows you to receive emails without showing your real email. We will forward emails from proxy-address to your real immediately after sent." />
+
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://localhost:904/css/normalize.css">
+        <link rel="stylesheet" href="https://localhost:904/css/style.css">
+
+        <script>
+            window['_fs_debug'] = false;
+            window['_fs_host'] = 'fullstory.com';
+            window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
+            window['_fs_org'] = 'TPK4D';
+            window['_fs_namespace'] = 'FS';
+            (function(m,n,e,t,l,o,g,y){
+                if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
+                g=m[e]=function(a,b,s){g.q?g.q.push([a,b,s]):g._api(a,b,s);};g.q=[];
+                o=n.createElement(t);o.async=1;o.crossOrigin='anonymous';o.src='https://'+_fs_script;
+                y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+                g.identify=function(i,v,s){g(l,{uid:i},s);if(v)g(l,v,s)};g.setUserVars=function(v,s){g(l,v,s)};g.event=function(i,v,s){g('event',{n:i,p:v},s)};
+                g.anonymize=function(){g.identify(!!0)};
+                g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)};
+                g.log = function(a,b){g("log",[a,b])};
+                g.consent=function(a){g("consent",!arguments.length||a)};
+                g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
+                g.clearUserCookie=function(){};
+                g._w={};y='XMLHttpRequest';g._w[y]=m[y];y='fetch';g._w[y]=m[y];
+                if(m[y])m[y]=function(){return g._w[y].apply(this,arguments)};
+                g._v="1.2.0";
+            })(window,document,window['_fs_namespace'],'script','user');
+        </script>
+
+    <!-- Start of Async Drift Code -->
+        <script>
+            "use strict";
+
+            !function() {
+                var t = window.driftt = window.drift = window.driftt || [];
+                if (!t.init) {
+                    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+                    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+                        t.factory = function(e) {
+                            return function() {
+                                var n = Array.prototype.slice.call(arguments);
+                                return n.unshift(e), t.push(n), t;
+                            };
+                        }, t.methods.forEach(function(e) {
+                        t[e] = t.factory(e);
+                    }), t.load = function(t) {
+                        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
+                    };
+                }
+            }();
+            drift.SNIPPET_VERSION = '0.3.1';
+            drift.load('tsgxbid7da5w');
+        </script>
+        <!-- End of Async Drift Code -->
+
+    </head>
+    <body>
+    <!-- DO NOT MODIFY -->
+    <!-- Quora Pixel Code (JS Helper) -->
+    <script>
+        !function(q,e,v,n,t,s){if(q.qp) return; n=q.qp=function(){n.qp?n.qp.apply(n,arguments):n.queue.push(arguments);}; n.queue=[];t=document.createElement(e);t.async=!0;t.src=v; s=document.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);}(window, 'script', 'https://a.quora.com/qevents.js');
+        qp('init', 'bb8c0cf1a3774de18fad33c96fdca242');
+        qp('track', 'ViewContent');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://q.quora.com/_/ad/bb8c0cf1a3774de18fad33c96fdca242/pixel?tag=ViewContent&noscript=1"/></noscript>
+    <!-- End of Quora Pixel Code -->
+
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <a class="header__logo" href="/">
+                    <img src="https://localhost:904/images/logo.svg" alt="">
+                </a>
+                <nav class="header__menu">
+                    <ul>
+                        <li class="header__menu-item"><a href="plans.html">Plans</a></li>
+                        <li class="header__menu-item"><a href="faq.html">FAQ</a></li>
+                        <li class="header__menu-item light__btn"><a href="sign-in.html">Sign in</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+            
+            <script>
+            window.mode='mainpage';
+            window.api="https://localhost:904/api/v1/";
+        </script>
+    
+    <!-- PROXIEDMAIL SECTION -->
+
+    <section class="proximail">
+        <div class="container">
+            <div class="proximail__inner">
+                <div class="proximail__content">
+                    <h1 class="proximail__title">
+                        ProxiedMail
+                    </h1>
+                    <div class="proximail__text">
+                        Alias for your email. <br>
+                        Stay anonymous & independent.
+                    </div>
+                    <a class="proximail__btn btn" href="sign-in.html">
+                        Sign in
+                    </a>
+                </div>
+                <div class="proximail__image">
+                    <img src="https://localhost:904/images/proxied_mail.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENCRYPTED SECTION -->
+
+    <section class="encrypted">
+        <div class="container">
+            <div class="encrypted__inner">
+                <div class="encrypted__item">
+                    <div class="encrypted__item-title">
+                        Email message
+                    </div>
+                    <div class="encrypted__item-image">
+                        <img src="https://localhost:904/images/email_message-bg.png" alt="">
+                    </div>
+                    <div class="encrypted__item-text">
+                        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
+                    </div>
+                </div>
+                <div class="encrypted__item item__magic_stick">
+                    <div class="encrypted__item-title">
+                        ProxiedMail encrypted
+                    </div>
+                    <div class="encrypted__item-image">
+                        <img src="https://localhost:904/images/encrypted-bg.png" alt="">
+                    </div>
+                    <div class="encrypted__item-text">
+                        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
+                    </div>
+                </div>
+                <div class="encrypted__item item__open_mail">
+                    <div class="encrypted__item-title">
+                        Your real address
+                    </div>
+                    <div class="encrypted__item-image">
+                        <img src="https://localhost:904/images/real_address-bg.png" alt="">
+                    </div>
+                    <div class="encrypted__item-text">
+                        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CREATE SECTION -->
+
+    <section class="create">
+        <div class="container">
+            <div class="create__top">
+                <div class="create__top-content">
+                    <h2 class="create__top-title">
+                        Create Proxy
+                    </h2>
+                    <div class="create__top-text">
+                        Enter your real email and invent proxy address to get alias at <span>@proxiedmail.com</span> which allows you to receive emails without showing your real email.
+                    </div>
+                </div>
+                <div class="create__top-warning">
+                    We will forward emails from proxy-address to your real immediately after sent. You can disable this email anytime.
+                </div>
+            </div>
+            <hr/>
+            <script>
+                window.mode='mainpage';
+                window.api="https://localhost:904/api/v1/";
+            </script>
+            <div class="container">
+                <h3 class="display-6" style="text-align: center;">Create Proxy</h3>
+
+                <p class="lead">
+                    Enter your real email and invent proxy address to get alias at <i>@proxiedmail.com</i> which allows you to receive emails without showing your real email.
+                    We will forward emails from proxy-address to your real immediately after sent.
+                    You can disable this email anytime.
+                </p>
+
+
+                <div id="root"></div>
+                <script>!function(i){function e(e){for(var t,r,n=e[0],o=e[1],u=e[2],l=0,f=[];l<n.length;l++)r=n[l],Object.prototype.hasOwnProperty.call(p,r)&&p[r]&&f.push(p[r][0]),p[r]=0;for(t in o)Object.prototype.hasOwnProperty.call(o,t)&&(i[t]=o[t]);for(s&&s(e);f.length;)f.shift()();return c.push.apply(c,u||[]),a()}function a(){for(var e,t=0;t<c.length;t++){for(var r=c[t],n=!0,o=1;o<r.length;o++){var u=r[o];0!==p[u]&&(n=!1)}n&&(c.splice(t--,1),e=l(l.s=r[0]))}return e}var r={},p={1:0},c=[];function l(e){if(r[e])return r[e].exports;var t=r[e]={i:e,l:!1,exports:{}};return i[e].call(t.exports,t,t.exports,l),t.l=!0,t.exports}l.m=i,l.c=r,l.d=function(e,t,r){l.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},l.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},l.t=function(t,e){if(1&e&&(t=l(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(l.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var n in t)l.d(r,n,function(e){return t[e]}.bind(null,n));return r},l.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return l.d(t,"a",t),t},l.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},l.p="/";var t=this.webpackJsonptodos=this.webpackJsonptodos||[],n=t.push.bind(t);t.push=e,t=t.slice();for(var o=0;o<t.length;o++)e(t[o]);var s=n;a()}([])</script>
+                <script src="/js/proxybinding/2.d5e70416.chunk.js"></script><script src="/js/proxybinding/main.04b0a55b.chunk.js"></script>                <br/>
+                <p class="lead" style="font-size: 1em;">Have an account ? Let's <a href="/en/signin">sign in</a></p>
+            </div>
+            <hr/>
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </section>
+
+    <!-- ADVANTAGE SECTION -->
+
+    <section class="advantage">
+        <div class="container">
+            <div class="advantage__inner">
+                <div class="advantage__content">
+                    <h2 class="advantage__title">
+                        Advantage
+                    </h2>
+                    <ul class="advantage__text">
+                        <li class="advantage__text-list">
+                            Vendor-free from email address provider. You can change forwarding-to anytime, for example - from GMail to ProtonMail or just immediately change forwarding for receiving emails from Apple to other real email address.
+                        </li>
+                        <li class="advantage__text-list">
+                            Protect your data - your personal email. Your email address might be exposed and searchable in search engines like Google. ProxiedMail allows you to keep secure from any investigations of sender.
+                        </li>
+                        <li class="advantage__text-list">
+                            Set up hidden gateway to receive one email to multiple recipients.
+                        </li>
+                        <li class="advantage__text-list">
+                            Have an multiple accounts on sevices which requires email, but you will still have forwarding to the same mailbox.
+                        </li>
+                    </ul>
+                </div>
+                <div class="account">
+                    <img class="account-image" src="https://localhost:904/images/advantage.png" alt="">
+                    <h4 class="account-title">
+                        Have an account?
+                    </h4>
+                    <a class="account-btn btn" href="sign-in.html">
+                        Sign in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECURITY SECTION -->
+
+    <section class="security">
+        <div class="container">
+            <div class="security__inner">
+                <div class="security__content">
+                    <h2 class="security__title">
+                        Security
+                    </h2>
+                    <div class="security__text">
+                        The service is absolutely secure. We store your emails as an encrypted and anonymized data for a short time to have ability to resend it if something went wrong, no one can read it.
+                    </div>
+                </div>
+                <div class="security__image">
+                    <img src="https://localhost:904/images/security.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST_US SECTION -->
+
+    <section class="trust_us">
+        <div class="container">
+            <div class="trust_us__inner">
+                <h4 class="trust_us__title">
+                    Trust us and enjoy anonymous & independent mailing
+                </h4>
+                <a class="trust_us__btn btn" href="sign-in.html">
+                    Sign in
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class=" footer__contact">
+                    <h5 class="footer__contact-title">
+                        Questions?
+                    </h5>
+                    <div class="footer__contact-text">
+                        Let's be in touch
+                    </div>
+                    <a class="footer__contact-mail" href="mailto:alex@proxiedmail.com">
+                        alex@proxiedmail.com.
+                    </a>
+                </div>
+                <div class="footer__box">
+                    <ul class="footer__item">
+                        <li class="footer__item-list"><a href="#">Alternative to Firefox Relay</a></li>
+                        <li class="footer__item-list"><a href="#">Callback / Webhook on received email</a></li>
+                        <li class="footer__item-list"><a href="#">Shared profile access between emails</a></li>
+                    </ul>
+                </div>
+                <div class="footer__box">
+                    <ul class="footer__item">
+                        <li class="footer__item-list"><a href="#">Alternative to Firefox Relay</a></li>
+                        <li class="footer__item-list"><a href="#">Callback / Webhook on received email</a></li>
+                        <li class="footer__item-list"><a href="#">Shared profile access between emails</a></li>
+                    </ul>
+                </div>
+                <div class="footer__box">
+                    <ul class="footer__item">
+                        <li class="footer__item-list"><a href="#">Alternative to Firefox Relay</a></li>
+                        <li class="footer__item-list"><a href="#">Callback / Webhook on received email</a></li>
+                        <li class="footer__item-list"><a href="#">Shared profile access between emails</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                © 2021 ProxiedMail. Self-funded & independent company.
+            </div>
+        </div>
+    </footer>
+
+    </body>
+
+</html>
