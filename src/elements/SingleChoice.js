@@ -7,6 +7,21 @@ class SingleChoice extends React.Component
         super(props);
     }
 
+    handleOnClick(variant)
+    {
+        this.props.config.variants = this.props.config.variants.reduce(function (acc, value) {
+            if (value.title === variant.title && variant.value === null) {
+                variant.showMyVariant = true;
+                acc.push(value);
+                return acc;
+            }
+
+            acc.push(value);
+            return acc;
+        }, []);
+        this.forceUpdate();
+    }
+
     render()
     {
 
@@ -24,8 +39,12 @@ class SingleChoice extends React.Component
                     
                        { this.props.config.variants.map((variant) => {
                             return <div>
-                                <input type="radio" id="male" value={variant.value} name="gender"/>
-                                <label for="male">{variant.value === null ? variant.title : variant.value}</label>
+                                <input   type="radio" value={variant.value} name={variant.title} id={variant.title}/>
+                                <label onClick={() => this.handleOnClick(variant)} htmlFor={variant.title}>{variant.value === null ? variant.title : variant.value}</label>
+                        
+
+                                <input style={variant.showMyVariant !== undefined ? {"display":'block'} : {}} type="text" placeholder="My variant"/>
+
                             </div>
                         })}
                     

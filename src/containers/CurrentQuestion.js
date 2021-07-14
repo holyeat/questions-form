@@ -1,6 +1,8 @@
 import React from 'react';
 import SingleChoice from '../elements/SingleChoice';
 import TextElement from '../elements/TextElement';
+import MultiChoice from '../elements/MultiChoice';
+import Numeric from '../elements/Numeric';
 
 class CurrentQuestion extends React.Component {
     constructor(props)
@@ -19,6 +21,13 @@ class CurrentQuestion extends React.Component {
             case 'single-choice': 
                 contents = <SingleChoice config={currentStep}/>
                 break;
+            case 'multiple-choice': 
+                contents = <MultiChoice config={currentStep}/>
+                break;    
+             case 'numeric': 
+                contents = <Numeric config={currentStep}/>
+                break;    
+
             default:    
         }
 
