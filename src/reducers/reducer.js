@@ -12,7 +12,13 @@ const initialState = {
     switch (action.type) {
         case "nextStep":
             return {...state, currentStep: state.currentStep + 1};
+            case "previousStep":
+                if (state.currentStep === 0) {
+                    return state;
+                }
 
+                return {...state, currentStep: state.currentStep - 1};
+    
         default:
         // If this reducer doesn't recognize the action type, or doesn't
         // care about this specific action, return the existing state unchanged

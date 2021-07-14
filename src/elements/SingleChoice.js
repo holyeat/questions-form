@@ -25,7 +25,7 @@ class SingleChoice extends React.Component
                        { this.props.config.variants.map((variant) => {
                             return <div>
                                 <input type="radio" id="male" value={variant.value} name="gender"/>
-                                <label for="male">{variant.value}</label>
+                                <label for="male">{variant.value === null ? variant.title : variant.value}</label>
                             </div>
                         })}
                     

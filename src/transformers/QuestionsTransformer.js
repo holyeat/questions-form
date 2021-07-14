@@ -18,6 +18,11 @@ function questionsTransformer(steps)
         }
     }
 
+    let total = transformed.length;
+    for (let i3 in transformed) {
+        transformed[i3].total = total;
+    }
+
     return transformed;
 }
 
