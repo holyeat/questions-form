@@ -8,18 +8,32 @@ class Questions extends React.Component {
     constructor(props)
     {
         super(props);
+        this.props.state.subscribe(() => this.props.state.getState());
+
     }
 
     render(params) {
+        const store = this.props.state;
+        store.subscribe(() => {
+            this.forceUpdate();
+        });
+        
+
         let questionsList = window.config;
         let currentStep = this.props.state.getState().steps[this.props.state.getState().currentStep];
+        console.log(currentStep);
 
 
         return <div className="form" action="/" method="POST">
             <FormHeader step={currentStep}/>
             <CurrentQuestion state={this.props.state} step={currentStep}/>
-            <FormFooter step={currentStep}/>
+            <FormFooter step={currentStep} parent={this}/>
         </div>
+    }
+
+    submit()
+    {
+        this.props.state.dispatch({ type: 'nextStep' });
     }
 }
 

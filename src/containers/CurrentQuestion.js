@@ -1,4 +1,5 @@
 import React from 'react';
+import SingleChoice from '../elements/SingleChoice';
 import TextElement from '../elements/TextElement';
 
 class CurrentQuestion extends React.Component {
@@ -10,13 +11,16 @@ class CurrentQuestion extends React.Component {
     render(params) {
         let currentStep = this.props.step;
         let contents;
-        console.log(this.props.step);
-        console.log(currentStep.type);
+
         switch(currentStep.type) {
             case 'input': 
                 contents = <TextElement config={currentStep}/>
+                break;
+            case 'single-choice': 
+                contents = <SingleChoice config={currentStep}/>
+                break;
+            default:    
         }
-console.log(contents);
 
         return <div>
             {contents}
