@@ -1,6 +1,7 @@
 import React from 'react';
 import CurrentQuestion from '../containers/CurrentQuestion';
-
+import FormHeader from '../containers/FormHeader';
+import FormFooter from '../containers/FormFooter';
 
 class Questions extends React.Component {
 
@@ -13,9 +14,11 @@ class Questions extends React.Component {
         let questionsList = window.config;
         let currentStep = this.props.state.getState().steps[this.props.state.getState().currentStep];
 
-        
-        return <div>
+
+        return <div className="form" action="/" method="POST">
+            <FormHeader step={currentStep}/>
             <CurrentQuestion state={this.props.state} step={currentStep}/>
+            <FormFooter step={currentStep}/>
         </div>
     }
 }

@@ -9,6 +9,16 @@ class FormHeader extends React.Component
 
     render()
     {
-        return 
+        return <div className="form__header">
+        <div className="form__header-title">
+            <h3>Step {this.props.step.sectionNumber}:<span>{this.props.step.sectionName}</span></h3>
+        </div>
+        <div className="form__header-line"></div>
+        <div className="form__header-bottom">
+            <a className="form__arrow active" href="#">back</a>
+            <div className="from__header-number"><span>1</span>/38</div>
+        </div>
+    </div>;
     }
 }
+export default FormHeader;

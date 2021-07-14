@@ -9,16 +9,16 @@ class TextElement extends React.Component
 
     render()
     {
-        return                 <div class="form__main"> <div class="form__main-text">
+        return                 <div className="form__main"> <div className="form__main-text">
             <ul>
                 <li><span>*</span> - Required</li>
             </ul>
         </div>
-        <div class="form__main-title">
-            <h2>1.Choose your title (Mr, Ms, Mrs, Dr, Sir…)</h2>
+        <div className="form__main-title">
+            <h2>{this.props.config.title}</h2>
         </div>
-        <div class="form__group">
-            <input type="text" placeholder="Mrs or Mr, Dr, etc"/>
+        <div className="form__group">
+            <input type="text" placeholder={this.props.config.placeholder}/>
         </div>
     </div>
 
