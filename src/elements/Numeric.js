@@ -2,6 +2,40 @@ import React from 'react'
 
 class Numeric extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.increment = this.increment.bind(this);
+        this.decrement = this.decrement.bind(this);
+
+        this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': 0});
+        this.forceUpdate();
+    }
+
+    handleChange(event)
+    {
+        this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': event.target.value});
+        this.forceUpdate();
+    }
+
+    increment()
+    {
+        this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': this.props.parent.getCurrentValue() + 1});
+        this.forceUpdate();
+    }
+
+    decrement()
+    {
+        let value = this.props.parent.getCurrentValue();
+        if (value <= 0) {
+            return;
+        }
+
+        this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': value - 1});
+        this.forceUpdate();
+    }
+
     render()
     {
         return        <div>        
@@ -10,9 +44,9 @@ class Numeric extends React.Component
     </div>
 
         <div className="form__group form__group--calc">
-        <button className="form__btn-calc" type="button">-</button>
-        <input className="form__input-calc" type="text" value="0"/>
-        <button className="form__btn-calc" type="button">+</button>
+        <button className="form__btn-calc"onClick={this.decrement}  type="button">-</button>
+        <input className="form__input-calc" type="text" onChange={this.handleChange} value={this.props.parent.getCurrentValue()}/>
+        <button className="form__btn-calc" onClick={this.increment} type="button">+</button>
      </div></div>;
     }
 

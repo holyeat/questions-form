@@ -9,6 +9,15 @@ class SingleChoice extends React.Component
 
     handleOnClick(variant)
     {
+        if (variant.value !== null) {
+            console.log(this.props);
+            this.props.parent.dispatch({
+                'type': 'submitSingleChoice',
+                'variant': variant,
+                'step': this.props.config,
+            });
+        }
+
         this.props.config.variants = this.props.config.variants.reduce(function (acc, value) {
             if (value.title === variant.title && variant.value === null) {
                 variant.showMyVariant = true;

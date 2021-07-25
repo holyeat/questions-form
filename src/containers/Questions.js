@@ -5,6 +5,8 @@ import FormFooter from '../containers/FormFooter';
 
 class Questions extends React.Component {
 
+    currentStep;
+
     constructor(props)
     {
         super(props);
@@ -21,6 +23,7 @@ class Questions extends React.Component {
 
         let questionsList = window.config;
         let currentStep = this.props.state.getState().steps[this.props.state.getState().currentStep];
+        this.currentStep = currentStep;
         console.log(currentStep);
 
 
@@ -36,9 +39,9 @@ class Questions extends React.Component {
         this.props.state.dispatch({ type: 'previousStep' });
     }
 
-    submit()
+    submit(value)
     {
-        this.props.state.dispatch({ type: 'nextStep' });
+        this.props.state.dispatch({ type: 'nextStep', 'step': this.currentStep, value: value});
     }
 }
 

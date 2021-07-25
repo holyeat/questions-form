@@ -9,8 +9,7 @@ class FormFooter extends React.Component
 
     submit()
     {
-        console.log(this);
-        this.props.parent.submit();
+        this.props.parent.submit(this.props.parent.value);
     }
 
     render()

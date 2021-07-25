@@ -5,9 +5,12 @@ import MultiChoice from '../elements/MultiChoice';
 import Numeric from '../elements/Numeric';
 
 class CurrentQuestion extends React.Component {
+    value;
+
     constructor(props)
     {
         super(props);
+        this.value = '';
     }
 
     render(params) {
@@ -16,16 +19,16 @@ class CurrentQuestion extends React.Component {
 
         switch(currentStep.type) {
             case 'input': 
-                contents = <TextElement config={currentStep}/>
+                contents = <TextElement config={currentStep} parent={this}/>
                 break;
             case 'single-choice': 
-                contents = <SingleChoice config={currentStep}/>
+                contents = <SingleChoice config={currentStep} parent={this}/>
                 break;
             case 'multiple-choice': 
-                contents = <MultiChoice config={currentStep}/>
+                contents = <MultiChoice config={currentStep} parent={this}/>
                 break;    
              case 'numeric': 
-                contents = <Numeric config={currentStep}/>
+                contents = <Numeric config={currentStep} parent={this}/>
                 break;    
 
             default:    
@@ -34,6 +37,14 @@ class CurrentQuestion extends React.Component {
         return <div>
             {contents}
         </div>
+    }
+
+    dispatch(params) {
+        this.props.state.dispatch(params);
+    }
+
+    getCurrentValue() {
+        return this.props.state.getState().currentValue;
     }
 }
 
