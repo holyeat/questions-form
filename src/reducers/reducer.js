@@ -16,12 +16,12 @@ const initialState = {
             state.answers[state.currentStep] = state.currentValue;
             state.currentValue = null;
             return {...state, currentStep: state.currentStep + 1};
-            case "previousStep":
+        case "previousStep":
                 if (state.currentStep === 0) {
                     return state;
                 }
 
-                return {...state, currentStep: state.currentStep - 1};
+                return {...state, currentStep: state.currentStep - 1, currentValue: state.answers[state.currentStep-1]};
         break;
         case 'changeCurrentValue':
                 return {...state, currentValue: action.currentValue};

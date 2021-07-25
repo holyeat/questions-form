@@ -9,9 +9,20 @@ class MultiChoice extends React.Component
 
     handleOnClick(variant)
     {
+        let currentValue = [];
         this.props.config.variants = this.props.config.variants.reduce(function (acc, value) {
-            if (value.title === variant.title && variant.value === null) {
-                variant.showMyVariant = true;
+            if (variant.checked) {
+                currentValue.push(value.value);
+            }
+
+            if (variant.value === value.value && !value.checked) {
+                value.checked=1;
+                acc.push(value);
+                return acc;
+            }
+
+            if (variant.value === value.value && value.checked) {
+                value.checked=0;
                 acc.push(value);
                 return acc;
             }
@@ -19,6 +30,8 @@ class MultiChoice extends React.Component
             acc.push(value);
             return acc;
         }, []);
+
+        this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': currentValue});
         this.forceUpdate();
     }
 
@@ -35,22 +48,18 @@ class MultiChoice extends React.Component
             <h2>{this.props.config.title}</h2>
         </div>
         <div className="form__group">
-                <div className="from__group-radio">
+                
                     
                        { this.props.config.variants.map((variant) => {
-                            return <div>
-                                <input   type="radio" value={variant.value} name={variant.title} id={variant.title}/>
-                                <label onClick={() => this.handleOnClick(variant)} htmlFor={variant.title}>{variant.value === null ? variant.title : variant.value}</label>
+                            return <div className="from__group-radio">
+                                <input  checked={variant.checked}  type="checkbox" value={variant.value} name={variant.title} id={variant.value}/>
+                                <label onClick={() => this.handleOnClick(variant)} htmlFor={variant.value}>{variant.value}</label>
                         
-
-                                <input style={variant.showMyVariant !== undefined ? {"display":'block'} : {}} type="text" placeholder="My variant"/>
-
                             </div>
                         })}
                     
                 </div>
 
-        </div>
     </div>
 
     }

@@ -9,7 +9,8 @@ class Numeric extends React.Component
         this.increment = this.increment.bind(this);
         this.decrement = this.decrement.bind(this);
 
-        this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': 0});
+        let currentValue = this.props.parent.getCurrentValue() > 0 ? this.props.parent.getCurrentValue() : 0;
+        this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': currentValue});
         this.forceUpdate();
     }
 
