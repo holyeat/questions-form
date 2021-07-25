@@ -5,6 +5,7 @@ const initialState = {
     'steps': questionsTransformer(window.config.questions.steps),
     'answers': [],
     'currentValue': '',
+    'error': 
 };
   
   // Use the initialState as a default value
@@ -13,15 +14,20 @@ const initialState = {
     // The reducer normally looks at the action type field to decide what happens
     switch (action.type) {
         case "nextStep":
+            if (state.steps[state.currentStep].required && state.currentValue.length < 1) {
+                return {...state, currentStep: state.currentStep, error: ""};
+            }
+
             state.answers[state.currentStep] = state.currentValue;
             state.currentValue = null;
-            return {...state, currentStep: state.currentStep + 1};
+            return {...state, currentStep: state.currentStep + 1, error: null};
         case "previousStep":
                 if (state.currentStep === 0) {
                     return state;
                 }
+                let stepNumber = state.currentStep - 1;
 
-                return {...state, currentStep: state.currentStep - 1, currentValue: state.answers[state.currentStep-1]};
+                return {...state, currentStep: stepNumber, currentValue: state.answers[stepNumber], error: null};
         break;
         case 'changeCurrentValue':
                 return {...state, currentValue: action.currentValue};
@@ -40,4 +46,3 @@ const initialState = {
         return state
     }
   }
-  
