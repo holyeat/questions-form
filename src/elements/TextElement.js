@@ -27,6 +27,7 @@ class TextElement extends React.Component
         <div className="form__group">
             <input type="text" onChange={this.handleChange} placeholder={this.props.config.placeholder} value={this.props.parent.getCurrentValue()}/>
         </div>
+        <div className="form__text-error active"><span>!</span>{this.props.parent.getError()}</div>
     </div>
 
     }

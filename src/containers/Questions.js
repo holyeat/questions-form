@@ -30,7 +30,7 @@ class Questions extends React.Component {
         return <div className="form" action="/" method="POST">
             <FormHeader step={currentStep} parent={this}/>
             <CurrentQuestion state={this.props.state} step={currentStep}/>
-            <FormFooter step={currentStep} parent={this}/>
+            <FormFooter step={currentStep} parent={this} state={this.props.state}/>
         </div>
     }
 

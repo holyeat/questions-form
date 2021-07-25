@@ -11,6 +11,8 @@ class CurrentQuestion extends React.Component {
     {
         super(props);
         this.value = '';
+
+        this.props.state.subscribe(() => this.props.state.getState());
     }
 
     render(params) {
@@ -38,6 +40,13 @@ class CurrentQuestion extends React.Component {
             {contents}
         </div>
     }
+
+
+    getError()
+    {
+        return this.props.state.getState().error;
+    }
+
 
     dispatch(params) {
         this.props.state.dispatch(params);

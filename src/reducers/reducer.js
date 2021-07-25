@@ -5,7 +5,7 @@ const initialState = {
     'steps': questionsTransformer(window.config.questions.steps),
     'answers': [],
     'currentValue': '',
-    'error': 
+    'error': '',
 };
   
   // Use the initialState as a default value
@@ -15,7 +15,7 @@ const initialState = {
     switch (action.type) {
         case "nextStep":
             if (state.steps[state.currentStep].required && state.currentValue.length < 1) {
-                return {...state, currentStep: state.currentStep, error: ""};
+                return {...state, currentStep: state.currentStep, error: 'failed'};
             }
 
             state.answers[state.currentStep] = state.currentValue;
