@@ -46,7 +46,10 @@ class MultiChoice extends React.Component
             </ul>
         </div>
         <div className="form__main-title">
-            <h2>{this.props.config.title}</h2>
+            <h2>{this.props.config.title}
+            <span>{this.props.config.required ? '*' : ''}</span>
+            
+            </h2>
         </div>
         <div className="form__group">
                 

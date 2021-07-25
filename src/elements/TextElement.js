@@ -23,7 +23,11 @@ class TextElement extends React.Component
             </ul>
         </div>
         <div className="form__main-title">
-            <h2>{this.props.config.title}</h2>
+            <h2>{this.props.config.title}
+            <span>{this.props.config.required ? '*' : ''}</span>
+
+            
+            </h2>
         </div>
         <div className="form__group">
             <input type="text" onChange={this.handleChange} placeholder={this.props.config.placeholder} value={this.props.parent.getCurrentValue()}/>

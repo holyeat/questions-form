@@ -43,7 +43,11 @@ class Numeric extends React.Component
     {
         return        <div>        
         <div className="form__main-title">
-        <h2>{this.props.config.title}<span>*</span></h2>
+        <h2>{this.props.config.title}
+        <span>{this.props.config.required ? '*' : ''}</span>
+
+        
+        </h2>
     </div>
 
         <div className="form__group form__group--calc">
