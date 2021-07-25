@@ -14,6 +14,7 @@ const initialState = {
     // The reducer normally looks at the action type field to decide what happens
     switch (action.type) {
         case "nextStep":
+
             let step = state.steps[state.currentStep];
 
             state.currentValue = state.currentValue === undefined ||  state.currentValue === null ? '' : state.currentValue;
@@ -21,7 +22,8 @@ const initialState = {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
 
-            if (step.required && step.type === 'multiple-choice' && state.currentValue.length === 0) {
+            console.log(step.required, step.type === 'multiple-choice', state.currentValue, state.currentValue.length);
+            if (step.required && step.type === 'multiple-choice' && (state.currentValue === null || state.currentValue.length === 0)) {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
 

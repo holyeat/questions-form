@@ -12,6 +12,13 @@ class MultiChoice extends React.Component
     {
         let currentValue = [];
         this.props.config.variants = this.props.config.variants.reduce(function (acc, value) {
+
+            if (variant.value === value.value && value.checked) {
+                value.checked=0;
+                acc.push(value);
+                return acc;
+            }
+
             if (variant.checked) {
                 currentValue.push(value.value);
             }
@@ -22,15 +29,11 @@ class MultiChoice extends React.Component
                 return acc;
             }
 
-            if (variant.value === value.value && value.checked) {
-                value.checked=0;
-                acc.push(value);
-                return acc;
-            }
-
             acc.push(value);
             return acc;
         }, []);
+
+console.log(currentValue);
 
         this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': currentValue});
         this.forceUpdate();
