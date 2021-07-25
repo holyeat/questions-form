@@ -14,20 +14,32 @@ const initialState = {
     // The reducer normally looks at the action type field to decide what happens
     switch (action.type) {
         case "nextStep":
-            if (state.steps[state.currentStep].required && state.currentValue.length < 1) {
-                return {...state, currentStep: state.currentStep, error: 'failed'};
+            let step = state.steps[state.currentStep];
+
+            state.currentValue = state.currentValue === undefined ||  state.currentValue === null ? '' : state.currentValue;
+            if (step.required && (state.currentValue.length < 1) && ['input', 'single-choice'].includes(step.type)) {
+                return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
+
+            if (step.required && step.type === 'multiple-choice' && state.currentValue.length === 0) {
+                return {...state, currentStep: state.currentStep, error: 'This field is required'};
+            }
+
+            if (step.required && step.type === 'numeric' && state.currentValue === 0) {
+                return {...state, currentStep: state.currentStep, error: 'This field is required'};
+            }
+
 
             state.answers[state.currentStep] = state.currentValue;
             state.currentValue = null;
-            return {...state, currentStep: state.currentStep + 1, error: null};
+            return {...state, currentStep: state.currentStep + 1, error: ''};
         case "previousStep":
                 if (state.currentStep === 0) {
                     return state;
                 }
                 let stepNumber = state.currentStep - 1;
 
-                return {...state, currentStep: stepNumber, currentValue: state.answers[stepNumber], error: null};
+                return {...state, currentStep: stepNumber, currentValue: state.answers[stepNumber], error: ''};
         break;
         case 'changeCurrentValue':
                 return {...state, currentValue: action.currentValue};
@@ -38,6 +50,7 @@ const initialState = {
             return {
                 ...state,
                 currentStep: state.currentStep + 1,
+                error: '',
             };
         break;
         default:

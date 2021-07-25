@@ -7,9 +7,11 @@ class FormHeader extends React.Component
         super(props);
     }
 
-    previousStep()
+    previousStep(event)
     {
-        return this.props.parent.previousStep();
+        event.preventDefault();
+        this.props.parent.previousStep();
+        return false;
     }
 
     render()

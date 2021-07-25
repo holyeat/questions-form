@@ -65,7 +65,7 @@ window.config = {
           },
           {
             "type": "single-choice",
-            "title": "Choose your genderspan",
+            "title": "Choose your gender",
             "variants": [
               {
                 "value": "Male"
@@ -75,7 +75,8 @@ window.config = {
               },
               {
                 "title": "My variant",
-                "value": null
+                "value": null,
+                "custom": true,
               }
             ],
             "required": true
@@ -83,6 +84,7 @@ window.config = {
           {
             "type": "numeric",
             "title": "How many hours do you sleep daily?",
+            "required": true
           }
         ]
       },

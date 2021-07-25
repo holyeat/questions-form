@@ -1,4 +1,5 @@
 import React from 'react'
+import Error from '../containers/Error';
 
 class MultiChoice extends React.Component
 { 
@@ -59,6 +60,7 @@ class MultiChoice extends React.Component
                         })}
                     
                 </div>
+                <Error error={this.props.parent.getError()} />
 
     </div>
 

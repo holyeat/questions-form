@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import Error from '../containers/Error';
+
 
 class Numeric extends React.Component
 {
@@ -48,7 +50,12 @@ class Numeric extends React.Component
         <button className="form__btn-calc"onClick={this.decrement}  type="button">-</button>
         <input className="form__input-calc" type="text" onChange={this.handleChange} value={this.props.parent.getCurrentValue()}/>
         <button className="form__btn-calc" onClick={this.increment} type="button">+</button>
-     </div></div>;
+     </div>
+     
+     <Error error={this.props.parent.getError()} />
+
+     
+     </div>;
     }
 
 }
