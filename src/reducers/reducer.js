@@ -1,4 +1,5 @@
 import questionsTransformer from "../transformers/QuestionsTransformer";
+import saveState from "../middleware/saveState";
 
 const initialState = {
     'currentStep': 0,
@@ -34,7 +35,9 @@ const initialState = {
 
             state.answers[state.currentStep] = state.currentValue;
             state.currentValue = null;
-            return {...state, currentStep: state.currentStep + 1, error: ''};
+            state = {...state, currentStep: state.currentStep + 1, error: ''};
+            saveState('form', window.userId, state);
+            return state;
         case "previousStep":
                 if (state.currentStep === 0) {
                     return state;
@@ -44,16 +47,22 @@ const initialState = {
                 return {...state, currentStep: stepNumber, currentValue: state.answers[stepNumber], error: ''};
         break;
         case 'changeCurrentValue':
-                return {...state, currentValue: action.currentValue};
+                state =  {...state, currentValue: action.currentValue};
+
+                saveState('form', window.userId, state);
+                return state;
         break;
         case 'submitSingleChoice':
             state.answers[state.currentStep] = action.variant.value;
             console.log(state);
-            return {
+            state =  {
                 ...state,
                 currentStep: state.currentStep + 1,
                 error: '',
             };
+
+            saveState('form', window.userId, state);
+            return state;
         break;
         default:
         // If this reducer doesn't recognize the action type, or doesn't
