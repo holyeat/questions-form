@@ -11,9 +11,11 @@ const initialState = {
   
   // Use the initialState as a default value
   export default function appReducer(state = initialState, action) {
-      console.log(state);
-    // The reducer normally looks at the action type field to decide what happens
+
     switch (action.type) {
+        case 'reload':
+            return action.state;
+        break;
         case "nextStep":
 
             let step = state.steps[state.currentStep];
@@ -48,8 +50,6 @@ const initialState = {
         break;
         case 'changeCurrentValue':
                 state =  {...state, currentValue: action.currentValue};
-
-                saveState('form', window.userId, state);
                 return state;
         break;
         case 'submitSingleChoice':

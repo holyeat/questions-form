@@ -2,6 +2,8 @@ import React from 'react'
 import Questions from '../containers/Questions';
 import reducer from '../reducers/reducer';
 import { createStore } from 'redux';
+import getRemoteState from '../middleware/getRemoteState';
+
 
 
 class App extends React.Component {
@@ -10,8 +12,12 @@ class App extends React.Component {
     constructor(props)
     {
         super(props);
-
         this.state = createStore(reducer);
+
+        getRemoteState('form', window.userId).then(
+            response => this.state.dispatch({type: 'reload', 'state': response.data.attributes.state})
+        );
+
     }
 
     render() {
