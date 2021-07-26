@@ -16,12 +16,30 @@ class FormHeader extends React.Component
 
     render()
     {
+        console.log(this.props.step);
+
+        let percent = ((this.props.step.questionNumber/this.props.step.total) * 100);
+        if (this.props.step.questionNumber === 1) {
+            percent = 0;
+        }
+
         return <div className="form__header">
         <div className="form__header-title">
             <h3>Step {this.props.step.sectionNumber}:<span>{this.props.step.section}</span>
             
             </h3>
         </div>
+
+
+        <style dangerouslySetInnerHTML={{
+  __html: [
+     '.form__header-line:before {',
+     '  width: ' + percent + '%',
+     '}'
+    ].join('\n')
+  }}>
+</style>
+
         <div className="form__header-line"></div>
         <div className="form__header-bottom">
             <a className="form__arrow active" href="#" onClick={this.previousStep.bind(this)}>back</a>
