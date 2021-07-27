@@ -21,10 +21,9 @@ class FormFooter extends React.Component
 
     render()
     {
-        return                 <div className="form__footer">
+        return                 <div  className="form__footer">
 
-
-        <a className="form__footer-text" onClick={this.clearForm.bind(this)} href="#">Fill the form later</a>
+        <a className="form__footer-text" onClick={this.clearForm.bind(this)} href="#" style={{'color': 'red'}}>Clear all answers</a>
         <a className="form__btn" onClick={this.submit.bind(this)}>Next</a>
         </div>;
     }
