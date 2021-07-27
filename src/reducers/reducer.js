@@ -7,14 +7,35 @@ const initialState = {
     'answers': [],
     'currentValue': '',
     'error': '',
+    'isLoaded': false,
 };
   
   // Use the initialState as a default value
   export default function appReducer(state = initialState, action) {
 
+    const initialState = {
+        'currentStep': 0,
+        'steps': questionsTransformer(window.config.questions.steps),
+        'answers': [],
+        'currentValue': '',
+        'error': '',
+        'isLoaded': false,
+    };
+      
+    
+
     switch (action.type) {
         case 'reload':
-            return action.state;
+            return {...state, 'isLoaded': true};
+        break;    
+        case 'load':
+                return {...state, 'isLoaded': false};
+        break;
+        case 'clear':
+            return {...initialState, 'isLoaded': true};
+        break;
+        case 'ready':
+            return {...state, 'isLoaded': true};
         break;
         case "nextStep":
 

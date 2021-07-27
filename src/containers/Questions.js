@@ -2,6 +2,7 @@ import React from 'react';
 import CurrentQuestion from '../containers/CurrentQuestion';
 import FormHeader from '../containers/FormHeader';
 import FormFooter from '../containers/FormFooter';
+import clearForm from '../middleware/clearForm';
 
 class Questions extends React.Component {
 
@@ -32,6 +33,16 @@ class Questions extends React.Component {
             <CurrentQuestion state={this.props.state} step={currentStep}/>
             <FormFooter step={currentStep} parent={this} state={this.props.state}/>
         </div>
+    }
+
+    clearForm()
+    {
+        this.props.state.dispatch({'type': 'load'});
+        this.forceUpdate();
+        clearForm('form', window.userId).then(() =>  {
+            this.props.state.dispatch({'type': 'clear'});
+            this.forceUpdate();
+        });
     }
 
     previousStep()

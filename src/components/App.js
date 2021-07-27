@@ -13,14 +13,43 @@ class App extends React.Component {
     {
         super(props);
         this.state = createStore(reducer);
+        this.state.subscribe(() => {
+            this.forceUpdate();
+        });
 
         getRemoteState('form', window.userId).then(
-            response => this.state.dispatch({type: 'reload', 'state': response.data.attributes.state})
+            response => {
+                if (typeof response.data === 'undefined') {
+                    this.state.dispatch({type: 'ready'});
+                    this.forceUpdate();
+                    return ;
+                }
+
+                this.state.dispatch({type: 'reload', 'state': response.data.attributes.state})
+                this.forceUpdate();
+            }
         );
 
     }
 
     render() {
+        if (!this.state.getState().isLoaded) {
+            return             <div className="wait-spinner">
+            <div className="lds-roller">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+;
+        }
+
+
         return (
             <div>
                 <Questions state={this.state} parent={this}/>
