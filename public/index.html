@@ -52,7 +52,7 @@
             <script>
 
 window.config = {
-  'nextStepUrl': '#',
+  "nextStepUrl": "#",
   "questions": {
     "steps": [
       {
@@ -62,6 +62,18 @@ window.config = {
             "type": "input",
             "title": "Choose your title (Mr, Ms, Mrs, Dr, Sir…)",
             "placeholder": "Mrs or Mr, Dr, etc",
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "What is your full name?",
+            "placeholder": "",
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "What is your age?",
+            "placeholder": "",
             "required": true
           },
           {
@@ -77,10 +89,127 @@ window.config = {
               {
                 "title": "My variant",
                 "value": null,
-                "custom": true,
+                "custom": true
               }
             ],
             "required": true
+          },
+          {
+            "type": "input",
+            "title": "How tall are you (in cm)?",
+            "placeholder": "",
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "What are your waist measurements (in cm)?",
+            "placeholder": "",
+            "required": false
+          },
+          {
+            "type": "input",
+            "title": "What are your hips measurements (in cm)?",
+            "placeholder": "",
+            "required": false
+          },
+          {
+            "type": "input",
+            "title": "What are your chest measurements (in cm)?",
+            "placeholder": "",
+            "required": false
+          },
+          {
+            "type": "input",
+            "title": "Do you have smart scales? Which ones?",
+            "placeholder": "",
+            "required": false
+          },
+          {
+            "type": "input",
+            "title": "Do you know your current body fat, protein and water percentages?",
+            "placeholder": "",
+            "required": false
+          },
+          {
+            "type": "single-choice",
+            "title": "How active are you?",
+            "variants": [
+              {
+                "value": "no physical activity"
+              },
+              {
+                "value": "low level of activity"
+              },
+              {
+                "value": "average activity level"
+              },
+              {
+                "value": "high level of activity"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
+              }
+            ],
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "Are you involved in any sports activities? If so, please specify",
+            "placeholder": "",
+            "required": false
+          },
+          {
+            "type": "single-choice",
+            "title": "Type of your work",
+            "variants": [
+              {
+                "value": "sedentary"
+              },
+              {
+                "value": "low active"
+              },
+              {
+                "value": "active"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
+              }
+            ],
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "Do you have any problems with the thyroid gland? If yes, please specify",
+            "placeholder": "",
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "Have you been diagnosed with diseases of the gastrointestinal tract? If yes, please specify",
+            "placeholder": "",
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "Do you have any food allergies? If yes, please specify",
+            "placeholder": "",
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "Have you been diagnosed with diabetes? If yes, could you please indicate the type?",
+            "placeholder": "",
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "Are there any other health-related issues we should be aware of?",
+            "placeholder": "",
+            "required": false
           },
           {
             "type": "numeric",
@@ -135,10 +264,10 @@ window.config = {
               },
               {
                 "value": "23"
-              },
+              }
             ],
             "required": true
-          },
+          }
         ]
       }
     ]

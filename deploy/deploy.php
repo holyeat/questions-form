@@ -17,10 +17,13 @@ $basepath = 'build/static/js/';
 $objects = array_merge(glob($basepath . '*.*.chunk.js'), glob($basepath . 'runtime-main.*.js'));
 $buildId = uniqid();
 
+
+$filenames = [];
 foreach ($objects as $objectPath) {
   $contents = file_get_contents($objectPath);
   $filename = explode('/', $objectPath);
   $filename = $filename[sizeof($filename) - 1];
+  $filenames[] = $filename;
 
 
   $result = $client->putObject(array(
@@ -30,4 +33,6 @@ foreach ($objects as $objectPath) {
   ));  
 }
 
-echo "\n Your build id: ". $buildId . "\n";
+echo "\n Your build id: ". $buildId . "\n\n";
+echo json_encode($filenames);
+echo "\n";

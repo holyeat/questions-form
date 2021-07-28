@@ -57,7 +57,7 @@ const initialState = {
 
 
             state.answers[state.currentStep] = state.currentValue;
-            state.currentValue = null;
+            state.currentValue = '';
             state = {...state, currentStep: state.currentStep + 1, error: ''};
             saveState('form', window.userId, state);
             return state;
