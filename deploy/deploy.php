@@ -13,8 +13,21 @@ $client = S3Client::factory(array(
   'version' => '2006-03-01',
 ));
 
-$result = $client->putObject(array(
-  'Bucket' => 'holyeat-front',
-  'Key'    => 'test.js',
-  'Body'   => 'console.log("loh");'
-));
+$basepath = 'build/static/js/';
+$objects = array_merge(glob($basepath . '*.*.chunk.js'), glob($basepath . 'runtime-main.*.js'));
+$buildId = uniqid();
+
+foreach ($objects as $objectPath) {
+  $contents = file_get_contents($objectPath);
+  $filename = explode('/', $objectPath);
+  $filename = $filename[sizeof($filename) - 1];
+
+
+  $result = $client->putObject(array(
+    'Bucket' => 'holyeat-front',
+    'Key'    => $buildId . '/'. $filename,
+    'Body'   => $contents,
+  ));  
+}
+
+echo "\n Your build id: ". $buildId . "\n";
