@@ -15,6 +15,6 @@ $client = S3Client::factory(array(
 
 $result = $client->putObject(array(
   'Bucket' => 'holyeat-front',
-  'Key'    => 'data.txt',
-  'Body'   => 'Hello!'
+  'Key'    => 'test.js',
+  'Body'   => 'console.log("loh");'
 ));
