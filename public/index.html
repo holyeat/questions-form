@@ -53,6 +53,7 @@
 
 window.config = {
   "nextStepUrl": "#",
+  'lastStep': "/lastStep",
   "questions": {
     "steps": [
       {
@@ -62,7 +63,8 @@ window.config = {
             "type": "input",
             "title": "Choose your title (Mr, Ms, Mrs, Dr, Sir…)",
             "placeholder": "Mrs or Mr, Dr, etc",
-            "required": true
+            "required": true,
+            "name": "your_title"
           },
           // {
           //   "type": "input",
@@ -212,6 +214,7 @@ window.config = {
           //   "required": false
           // },
           {
+            "name": "how_many_sleep",
             "type": "numeric",
             "title": "How many hours do you sleep daily?",
             "required": true
@@ -223,6 +226,7 @@ window.config = {
         "questions": [
           {
             "type": "multiple-choice",
+            "name": "prefer_fruits",
             "title": "What fruit do you prefer?",
             "variants": [
               {
@@ -257,6 +261,7 @@ window.config = {
           },
           {
             "type": "multiple-choice",
+            "name": "weight_prefer",
             "title": "What weight do you prefer?",
             "variants": [
               {

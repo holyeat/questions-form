@@ -1,6 +1,6 @@
 export function saveState(type, userId, state)
 {
-  return fetch(window.host + '/launch-api/internal/api/state-store', {
+  return fetch(window.host + '/launch-api/api/state-store', {
     credentials: 'include',
     method: 'PATCH',                                                              
     'mode': 'cors',

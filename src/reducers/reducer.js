@@ -1,6 +1,7 @@
 import questionsTransformer from "../transformers/QuestionsTransformer";
 import saveState from "../middleware/saveState";
 import submitForm from "../middleware/submitForm";
+import submitStateTransformer from "../transformers/submitStateTransformer";
 
 const initialState = {
     'currentStep': 0,
@@ -27,7 +28,7 @@ const initialState = {
 
     switch (action.type) {
         case 'reload':
-            return {...state, 'isLoaded': true};
+            return {...action.state, 'isLoaded': true};
         break;    
         case 'load':
                 return {...state, 'isLoaded': false};
@@ -59,9 +60,11 @@ const initialState = {
             let nextStepNumber = state.currentStep + 1;
             console.log(nextStepNumber, state.currentStep);
 
-            if (nextStepNumber === (step.total-1)) {
-                submitForm(window.userId);
-                return {...state, 'isLoaded': false};
+            if (nextStepNumber === step.total) {
+                submitForm(window.userId, submitStateTransformer(state)).then(() => {
+                    window.location.href = window.config.lastStep;
+                });
+                return {...state, 'isLoaded': false, 'stopApp': true};
             }
 
             state.answers[state.currentStep] = state.currentValue;
@@ -91,9 +94,11 @@ const initialState = {
             };
             let nextStepNumber2 = state.currentStep + 1;
             console.log(nextStepNumber2, step.total);
-            if (nextStepNumber2 > step.total) {
-                submitForm(window.userId);
-                return {...state, 'isLoaded': false};
+            if (nextStepNumber2 === step.total) {
+                submitForm(window.userId, submitStateTransformer(state)).then(() => {
+                    window.location.href = window.config.lastStep;
+                });
+                return {...state, 'isLoaded': false, 'stopApp': true};
             }
 
 

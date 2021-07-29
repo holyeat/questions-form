@@ -17,6 +17,10 @@ class App extends React.Component {
             this.forceUpdate();
         });
 
+        if (this.state.getState().stopApp) {
+            return ;
+        }
+        
         getRemoteState('form', window.userId).then(
             response => {
                 if (typeof response.data === 'undefined') {

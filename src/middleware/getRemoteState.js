@@ -1,6 +1,6 @@
 export function getRemoteState(type, userId)
 {
-  return fetch(window.host + '/launch-api/internal/api/state-store/'+ userId + '/'+type , {
+  return fetch(window.host + '/launch-api/api/state-store/'+ userId + '/'+type , {
     credentials: 'include',
     method: 'GET',                                                              
     'mode': 'cors',

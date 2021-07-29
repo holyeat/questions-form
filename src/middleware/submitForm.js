@@ -1,6 +1,6 @@
-export function submitForm(userId)
+export function submitForm(userId, body)
 {
-  return fetch(window.host + '/launch-api/internal/api/form/' , {
+  return fetch(window.host + '/formSubmit' , {
     credentials: 'include',
     method: 'POST',                                                              
     'mode': 'cors',
@@ -10,9 +10,7 @@ export function submitForm(userId)
       'Content-Type': 'application/json',
       'Authorization':  window.token,
     },  
-    'body': JSON.stringify({
-      'test':'test'
-    }),
+    'body': JSON.stringify(body),
   }).then(response => response.json())
 };
 
