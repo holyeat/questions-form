@@ -11,7 +11,10 @@ class MultiChoice extends React.Component
     handleOnClick(variant)
     {
         let currentValue = [];
+
+        console.log(variant);
         this.props.config.variants = this.props.config.variants.reduce(function (acc, value) {
+        console.log(value);
 
             if (variant.value === value.value && value.checked) {
                 value.checked=0;
@@ -19,22 +22,24 @@ class MultiChoice extends React.Component
                 return acc;
             }
 
-            if (variant.checked) {
+            if (value.checked) {
                 currentValue.push(value.value);
             }
 
-            if (variant.value === value.value && !value.checked) {
+            if (variant.value === value.value) {
                 value.checked=1;
+                currentValue.push(value.value);
                 acc.push(value);
                 return acc;
             }
+
 
             acc.push(value);
             return acc;
         }, []);
 
-console.log(currentValue);
 
+        console.log(currentValue);
         this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': currentValue});
         this.forceUpdate();
     }

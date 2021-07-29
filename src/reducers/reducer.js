@@ -1,5 +1,6 @@
 import questionsTransformer from "../transformers/QuestionsTransformer";
 import saveState from "../middleware/saveState";
+import submitForm from "../middleware/submitForm";
 
 const initialState = {
     'currentStep': 0,
@@ -55,10 +56,17 @@ const initialState = {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
 
+            let nextStepNumber = state.currentStep + 1;
+            console.log(nextStepNumber, state.currentStep);
+
+            if (nextStepNumber === (step.total-1)) {
+                submitForm(window.userId);
+                return {...state, 'isLoaded': false};
+            }
 
             state.answers[state.currentStep] = state.currentValue;
             state.currentValue = '';
-            state = {...state, currentStep: state.currentStep + 1, error: ''};
+            state = {...state, currentStep: nextStepNumber, error: ''};
             saveState('form', window.userId, state);
             return state;
         case "previousStep":
@@ -81,6 +89,13 @@ const initialState = {
                 currentStep: state.currentStep + 1,
                 error: '',
             };
+            let nextStepNumber2 = state.currentStep + 1;
+            console.log(nextStepNumber2, step.total);
+            if (nextStepNumber2 > step.total) {
+                submitForm(window.userId);
+                return {...state, 'isLoaded': false};
+            }
+
 
             saveState('form', window.userId, state);
             return state;
