@@ -2794,9 +2794,12 @@ span.color-black {
     font-weight: 500;
     color: #2A2A2A;
     cursor: pointer;
-    -webkit-transition: color .2s linear, background .2s linear;
-    -o-transition: color .2s linear, background .2s linear;
-    transition: color .2s linear, background .2s linear;
+    -webkit-transition: color .2s linear,
+ background .2s linear;
+    -o-transition: color .2s linear,
+ background .2s linear;
+    transition: color .2s linear,
+ background .2s linear;
 }
 
 .from__group-radio label:hover {
@@ -2923,6 +2926,7 @@ span.color-black {
 }
 
 .form__btn {
+    cursor: pointer;
     display: inline-block;
     vertical-align: middle;
     padding: 12px 78px 12px 46px;
@@ -2967,9 +2971,12 @@ span.color-black {
     background: #fff;
     border: 2px solid #5DBD6D;
     border-radius: 10px;
-    -webkit-transition: color .2s linear, background .2s linear;
-    -o-transition: color .2s linear, background .2s linear;
-    transition: color .2s linear, background .2s linear;
+    -webkit-transition: color .2s linear,
+ background .2s linear;
+    -o-transition: color .2s linear,
+ background .2s linear;
+    transition: color .2s linear,
+ background .2s linear;
 }
 
 .form__btn-calc:hover {
