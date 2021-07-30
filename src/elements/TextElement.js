@@ -9,6 +9,11 @@ class TextElement extends React.Component
         this.handleChange=this.handleChange.bind(this);
     }
 
+    componentDidMount(){
+        this.nameInput.focus();
+      }
+    
+
     handleChange(event)
     {
         this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': event.target.value});
@@ -30,7 +35,7 @@ class TextElement extends React.Component
             </h2>
         </div>
         <div className="form__group">
-            <input type="text" onChange={this.handleChange} placeholder={this.props.config.placeholder} value={this.props.parent.getCurrentValue()}/>
+            <input ref={(input) => { this.nameInput = input; }}  type="text" onChange={this.handleChange} placeholder={this.props.config.placeholder} value={this.props.parent.getCurrentValue()}/>
         </div>
 
         <Error error={this.props.parent.getError()} />

@@ -7,10 +7,11 @@ class FormFooter extends React.Component
         super(props);
     }
 
-    submit()
+    submit(event)
     {
-        
+        event.preventDefault();
         this.props.parent.submit(this.props.parent.value);
+        return false;
     }
 
     clearForm(event)

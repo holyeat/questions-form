@@ -58,7 +58,7 @@ const initialState = {
             }
 
             let nextStepNumber = state.currentStep + 1;
-            console.log(nextStepNumber, state.currentStep);
+            console.log(nextStepNumber, state.currentStep, state);
 
             if (nextStepNumber === step.total) {
                 submitForm(window.userId, submitStateTransformer(state)).then(() => {

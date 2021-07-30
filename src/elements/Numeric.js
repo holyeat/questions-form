@@ -16,6 +16,10 @@ class Numeric extends React.Component
         this.forceUpdate();
     }
 
+    componentDidMount(){
+        this.nameInput.focus();
+      }
+
     handleChange(event)
     {
         this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': event.target.value});
@@ -41,10 +45,13 @@ class Numeric extends React.Component
 
     render()
     {
-        return        <div>        
+        return        <div>    
+            
+                
         <div className="form__main-title">
         <h2>{this.props.config.title}
-        <span>{this.props.config.required ? '*' : ''}</span>
+        <span>{this.props.config.required ? '*' : ''}</span>         <div style={{'font-size': '12px', 'color': "#CCC"}}>Tip: lick on the number to edit manually</div>
+
 
         
         </h2>
@@ -52,7 +59,7 @@ class Numeric extends React.Component
 
         <div className="form__group form__group--calc">
         <button className="form__btn-calc"onClick={this.decrement}  type="button">-</button>
-        <input className="form__input-calc" type="text" onChange={this.handleChange} value={this.props.parent.getCurrentValue()}/>
+        <input  ref={(input) => { this.nameInput = input; }}  className="form__input-calc" type="text" onChange={this.handleChange} value={this.props.parent.getCurrentValue()}/>
         <button className="form__btn-calc" onClick={this.increment} type="button">+</button>
      </div>
      
