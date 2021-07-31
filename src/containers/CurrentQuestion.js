@@ -15,6 +15,10 @@ class CurrentQuestion extends React.Component {
         this.props.state.subscribe(() => this.props.state.getState());
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
+            
     render(params) {
         let currentStep = this.props.step;
         let contents;

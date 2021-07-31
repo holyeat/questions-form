@@ -52,178 +52,356 @@
             <script>
 
 window.config = {
+  "lastStep": "/nutritionists",
   "nextStepUrl": "#",
-  'lastStep': "/lastStep",
   "questions": {
     "steps": [
       {
-        "title": "Personal informations",
+        "title": "Personal information",
         "questions": [
           {
             "type": "input",
             "title": "Choose your title (Mr, Ms, Mrs, Dr, Sir…)",
             "placeholder": "Mrs or Mr, Dr, etc",
-            "required": true,
+            "required": false,
             "name": "your_title"
           },
-          // {
-          //   "type": "input",
-          //   "title": "What is your full name?",
-          //   "placeholder": "",
-          //   "required": true
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "What is your age?",
-          //   "placeholder": "",
-          //   "required": true
-          // },
-          // {
-          //   "type": "single-choice",
-          //   "title": "Choose your gender",
-          //   "variants": [
-          //     {
-          //       "value": "Male"
-          //     },
-          //     {
-          //       "value": "Female"
-          //     },
-          //     {
-          //       "title": "My variant",
-          //       "value": null,
-          //       "custom": true
-          //     }
-          //   ],
-          //   "required": true
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "How tall are you (in cm)?",
-          //   "placeholder": "",
-          //   "required": true
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "What are your waist measurements (in cm)?",
-          //   "placeholder": "",
-          //   "required": false
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "What are your hips measurements (in cm)?",
-          //   "placeholder": "",
-          //   "required": false
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "What are your chest measurements (in cm)?",
-          //   "placeholder": "",
-          //   "required": false
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "Do you have smart scales? Which ones?",
-          //   "placeholder": "",
-          //   "required": false
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "Do you know your current body fat, protein and water percentages?",
-          //   "placeholder": "",
-          //   "required": false
-          // },
-          // {
-          //   "type": "single-choice",
-          //   "title": "How active are you?",
-          //   "variants": [
-          //     {
-          //       "value": "no physical activity"
-          //     },
-          //     {
-          //       "value": "low level of activity"
-          //     },
-          //     {
-          //       "value": "average activity level"
-          //     },
-          //     {
-          //       "value": "high level of activity"
-          //     },
-          //     {
-          //       "title": "My variant",
-          //       "value": null,
-          //       "custom": true
-          //     }
-          //   ],
-          //   "required": true
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "Are you involved in any sports activities? If so, please specify",
-          //   "placeholder": "",
-          //   "required": false
-          // },
-          // {
-          //   "type": "single-choice",
-          //   "title": "Type of your work",
-          //   "variants": [
-          //     {
-          //       "value": "sedentary"
-          //     },
-          //     {
-          //       "value": "low active"
-          //     },
-          //     {
-          //       "value": "active"
-          //     },
-          //     {
-          //       "title": "My variant",
-          //       "value": null,
-          //       "custom": true
-          //     }
-          //   ],
-          //   "required": true
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "Do you have any problems with the thyroid gland? If yes, please specify",
-          //   "placeholder": "",
-          //   "required": true
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "Have you been diagnosed with diseases of the gastrointestinal tract? If yes, please specify",
-          //   "placeholder": "",
-          //   "required": true
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "Do you have any food allergies? If yes, please specify",
-          //   "placeholder": "",
-          //   "required": true
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "Have you been diagnosed with diabetes? If yes, could you please indicate the type?",
-          //   "placeholder": "",
-          //   "required": true
-          // },
-          // {
-          //   "type": "input",
-          //   "title": "Are there any other health-related issues we should be aware of?",
-          //   "placeholder": "",
-          //   "required": false
-          // },
           {
-            "name": "how_many_sleep",
+            "type": "input",
+            "title": "What is your full name?",
+            "placeholder": "",
+            "required": true,
+            "name": "full_name"
+          },
+          {
             "type": "numeric",
-            "title": "How many hours do you sleep daily?",
-            "required": true
+            "title": "What is your age?",
+            "required": true,
+            "name": "age"
+          },
+          {
+             "type": "single-choice",
+            "name": "gender",
+             "title": "Choose your gender",
+             "variants": [
+               {
+                 "value": "Male"
+               },
+               {
+                 "value": "Female"
+               },
+               {
+                 "title": "My variant",
+                 "value": null,
+                 "custom": true
+               }
+             ],
+             "required": true
           }
         ]
       },
       {
+        "title": "Physical parameters",
+        "questions": [
+          {
+            "type": "numeric",
+            "title": "What is your weight?",
+            "required": true,
+            "name": "weight"
+          },
+          {
+            "type": "numeric",
+            "title": "How tall are you (cm)?",
+            "required": true,
+            "name": "tall",
+            "predefinedValue": 170,
+          },
+          {
+            "type": "numeric",
+            "title": "What are your waist measurements (in cm)?",
+            "required": true,
+            "name": "waist"
+          },
+          {
+            "type": "numeric",
+            "title": "What are your hips measurements (in cm)?",
+            "required": true,
+            "name": "hips"
+          },
+          {
+            "type": "numeric",
+            "title": "What are your chest measurements (in cm)?",
+            "required": true,
+            "name": "chest"
+          },
+          {
+            "type": "numeric",
+            "title": "Do you have smart scales? Which ones?",
+            "required": true,
+            "name": "scales"
+          },
+          {
+            "type": "input",
+            "title": "Do you know your current body fat, protein and water percentages?",
+            "required": false,
+            "placeholder": "",
+            "name": "body_fat"
+          }
+        ]
+      },
+      {
+        "title": "Your lifestyle",
+        "questions": [
+          {
+            "type": "numeric",
+            "title": "Are you involved in any sports activities? If so, please specify",
+            "required": false,
+            "name": "sports_activities"
+          },
+          {
+            "type": "numeric",
+            "title": "How many hours do you sleep daily?",
+            "required": true,
+            "name": "sleep_daily"
+          },
+          {
+            "type": "single-choice",
+            "title": "How active are you?",
+            "name": "how_active",
+            "variants": [
+              {
+                "value": "no physical activity"
+              },
+              {
+                "value": "low level of activity"
+              },
+              {
+                "value": "average activity level"
+              },
+              {
+                "value": "high level of activity"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
+              }
+            ],
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "What do you drink during the day and how much?",
+            "required": true,
+            "name": "how_many_drink"
+          },
+          {
+            "type": "single-choice",
+            "title": "Type of your work",
+            "name": "type_of_work",
+            "variants": [
+              {
+                "value": "sedentary"
+              },
+              {
+                "value": "low active"
+              },
+              {
+                "value": "active"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
+              }
+            ],
+            "required": true
+          }
+        ]
+      },
+
+
+      {
+        "title": "Health features",
+        "questions": [
+          {
+            "type": "input",
+            "title": "Do you have any problems with the thyroid gland? If yes, please specify",
+            "required": true,
+            "placeholder": "",
+            "name": "thyroid_gland"
+          },
+          {
+            "type": "input",
+            "title": "Have you been diagnosed with diseases of the gastrointestinal tract? If yes, please specify",
+            "required": true,
+            "placeholder": "",
+            "name": "gastrointestinal"
+          },
+          {
+            "type": "input",
+            "placeholder": "",
+            "title": "Do you have any food allergies? If yes, please specify?",
+            "required": true,
+            "name": "allergies"
+          },
+          {
+            "type": "input",
+            "placeholder": "",
+            "title": "Have you been diagnosed with diabetes? If yes, could you please indicate the type",
+            "required": true,
+            "name": "diabetes"
+          },
+          {
+            "type": "input",
+            "placeholder": "",
+            "title": "Are there any other health-related issues we should be aware of?",
+            "required": false,
+            "name": "health_issues"
+          }
+        ]
+      },
+
+
+
+      {
         "title": "Goals and food preferences",
         "questions": [
+          {
+            "type": "input",
+            "title": "What is your desired weight?",
+            "placeholder": "",
+            "required": false,
+            "name": "desired_weight"
+          },
+          {
+            "type": "single-choice",
+            "title": "Are you ready to cook every day to achieve the goals? ",
+            "required": true,
+            "name": "cook_everyday",
+            "variants": [
+              {
+                "value": "Yes"
+              },
+              {
+                "value": "No"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
+              }
+            ]
+          },
+
+          {
+            "type": "input",
+            "placeholder": "",
+            "title": "Is there any additional information we must take into consideration? If so, kindly let us know below",
+            "required": false,
+            "name": "info_consideration"
+          },
+          {
+            "type": "input",
+            "placeholder": "",
+            "title": "What oil you use for cooking?",
+            "required": true,
+            "name": "oil_cook"
+          },
+          {
+            "type": "input",
+            "placeholder": "",
+            "title": "What is your favorite sweet food (including snacks)?",
+            "required": true,
+            "name": "sweet_food_snacks"
+          },
+          {
+            "type": "numeric",
+            "title": "How many meals per day you would like to eat?",
+            "required": true,
+            "name": "many_meals"
+          },
+
+
+
+          {
+            "type": "multiple-choice",
+            "name": "meat_prefer",
+            "title": "What meat do you prefer?",
+            "variants": [
+              {
+                "value": "chicken"
+              },
+              {
+                "value": "turkey"
+              },
+              {
+                "value": "beef"
+              },
+              {
+                "value": "pork"
+              },
+              {
+                "value": "lamb"
+              },
+              {
+                "value": "duck"
+              }
+            ],
+            "required": true
+          },
+          {
+            "type": "multiple-choice",
+            "name": "seafood_prefer",
+            "title": "What seafood do you prefer?",
+            "variants": [
+              {
+                "value": "shrimp"
+              },
+              {
+                "value": "squid"
+              },
+              {
+                "value": "mussels"
+              },
+              {
+                "value": "seaweed"
+              }
+            ],
+            "required": true
+          },
+          {
+            "type": "multiple-choice",
+            "name": "fish_prefer",
+            "title": "What fish do you prefer?",
+            "variants": [
+              {
+                "value": "salmon"
+              },
+              {
+                "value": "sea bass"
+              },
+              {
+                "value": "hake"
+              },
+              {
+                "value": "halibut"
+              },
+              {
+                "value": "cod"
+              },
+              {
+                "value": "pollock"
+              },
+              {
+                "value": "trout"
+              },
+              {
+                "value": "dorado (Mahi-mahi)"
+              }
+            ],
+            "required": true
+          },
           {
             "type": "multiple-choice",
             "name": "prefer_fruits",
@@ -255,26 +433,251 @@ window.config = {
               },
               {
                 "value": "Watermelon"
+              },
+              {
+                "value": "Melon"
+              },
+              {
+                "value": "Grapes"
+              },
+              {
+                "value": "Mango"
+              },
+              {
+                "value": "Peach"
+              },
+              {
+                "value": "Apricot"
+              },
+              {
+                "value": "Avocado"
+              },
+              {
+                "value": "Passionfruit"
+              },
+              {
+                "value": "Dragonfruit"
               }
             ],
             "required": true
           },
           {
             "type": "multiple-choice",
-            "name": "weight_prefer",
-            "title": "What weight do you prefer?",
+            "name": "dried_froots",
+            "title": "What dried fruits do you prefer?",
             "variants": [
               {
-                "value": "s82"
+                "value": "dried apricots"
               },
               {
-                "value": "s23"
+                "value": "raisins"
+              },
+              {
+                "value": "prunes"
+              },
+              {
+                "value": "dates"
               }
             ],
             "required": true
+          },
+
+          {
+            "type": "multiple-choice",
+            "name": "vegetables_prefer",
+            "title": "What vegetables do you prefer?",
+            "variants": [
+              {
+                "value": "Lettuce"
+              },
+              {
+                "value": "Tomatoes"
+              },
+              {
+                "value": "Cucumbers"
+              },
+              {
+                "value": "Sweet peppers"
+              },
+              {
+                "value": "Cabbage"
+              },
+              {
+                "value": "Corn"
+              },
+              {
+                "value": "Spinach"
+              },
+              {
+                "value": "Potatoes"
+              },
+              {
+                "value": "Beets"
+              },
+              {
+                "value": "Asparagus"
+              },
+              {
+                "value": "Mushrooms"
+              }
+            ],
+            "required": true
+          },
+
+
+          {
+            "type": "multiple-choice",
+            "name": "cereals_beans",
+            "title": "What cereals & beans do you prefer?",
+            "variants": [
+              {
+                "value": "cereals"
+              },
+              {
+                "value": "granola"
+              },
+              {
+                "value": "quinoa"
+              },
+              {
+                "value": "cous - cous"
+              },
+              {
+                "value": "bulgur"
+              },
+              {
+                "value": "black rice"
+              },
+              {
+                "value": "red rice"
+              },
+              {
+                "value": "Brown rice"
+              },
+              {
+                "value": "White rice"
+              },
+              {
+                "value": "pasta"
+              },
+              {
+                "value": "lentils"
+              },
+              {
+                "value": "chickpea"
+              },
+              {
+                "value": "beans"
+              },
+              {
+                "value": "buckwheat"
+              }
+            ],
+            "required": true
+          },
+
+
+
+          {
+            "type": "multiple-choice",
+            "name": "nuts_prefer",
+            "title": "What nuts do you prefer?",
+            "variants": [
+              {
+                "value": "almond"
+              },
+              {
+                "value": "walnut"
+              },
+              {
+                "value": "peanut"
+              },
+              {
+                "value": "pistachios"
+              },
+              {
+                "value": "cedar"
+              },
+              {
+                "value": "cashew"
+              },
+              {
+                "value": "hazelnut"
+              }
+            ],
+            "required": true
+          },
+
+
+          {
+            "type": "multiple-choice",
+            "name": "eggs_prefer",
+            "title": "What eggs do you prefer",
+            "variants": [
+              {
+                "value": "boiled"
+              },
+              {
+                "value": "steamed"
+              },
+              {
+                "value": "omelet"
+              },
+              {
+                "value": "fried"
+              }
+            ],
+            "required": true
+          },
+          {
+            "type": "multiple-choice",
+            "name": "dairy_prefer",
+            "title": "What eggs do you prefer",
+            "variants": [
+              {
+                "value": "cottage cheese"
+              },
+              {
+                "value": "yogurt"
+              },
+              {
+                "value": "hard cheese"
+              },
+              {
+                "value": "butter"
+              },
+              {
+                "value": "soft cheese"
+              },
+              {
+                "value": "cream"
+              },
+              {
+                "value": "milk"
+              }
+            ],
+            "required": true
+          },
+          {
+            "type": "input",
+            "title": "As we have an international team of nutritionists, sometimes the price might be lower if you hire a non-English speaking professional. Thus, what languages do you know other than English?",
+            "placeholder": "",
+            "required": false,
+            "name": "not_english_specialist"
+          },
+          {
+            "type": "input",
+            "title": "Feel free to ask any questions below",
+            "placeholder": "",
+            "required": false,
+            "name": "ask_questions"
           }
+
         ]
       }
+
+
+
     ]
   }
 };

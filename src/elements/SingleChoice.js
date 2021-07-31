@@ -1,5 +1,6 @@
 import React from 'react';
 import Error from '../containers/Error';
+import FormTitle from '../containers/FormTitle';
 
 class SingleChoice extends React.Component
 { 
@@ -30,23 +31,20 @@ class SingleChoice extends React.Component
     handleOnClick(variant)
     {
         if (variant.value !== null) {
-            console.log(this.props);
-            this.props.parent.dispatch({
-                'type': 'submitSingleChoice',
-                'variant': variant,
-                'step': this.props.config,
-            });
+            this.props.parent.dispatch({ type: 'nextStep', 'step': this.props.config, value: variant.value});
+            console.log({ type: 'nextStep', 'step': this.props.config, value: variant.value});
+            return ;
         }
 
         const variants = this.props.config.variants;
         this.props.config.variants = this.props.config.variants.reduce(function (acc, value) {
             if (value.title === variant.title && variant.value === null) {
                 variant.showMyVariant = !variants.reduce(function(acc, value) {
+                    variant.value ='';
                     acc.push(value.title);
                     return acc;
                 }, []).includes(value.value);
 
-                console.log(variant.showMyVariant);
                 acc.push(value);
                 return acc;
             }
@@ -63,6 +61,7 @@ class SingleChoice extends React.Component
             if (value.title!== undefined) {
                 value.value = event.target.value;
             }
+
             acc.push(value);
             return acc;
         }, []);
@@ -79,13 +78,7 @@ class SingleChoice extends React.Component
                 <li><span>*</span> - Required</li>
             </ul>
         </div>
-        <div className="form__main-title">
-            <h2>{this.props.config.title}
-            
-            <span>{this.props.config.required ? '*' : ''}</span>
-
-            </h2>
-        </div>
+        <FormTitle step={this.props.config}/>
         <div className="form__group">
                 <div className="from__group-radio">
                     

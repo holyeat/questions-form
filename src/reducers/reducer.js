@@ -24,7 +24,7 @@ const initialState = {
         'isLoaded': false,
     };
       
-    
+    let step;
 
     switch (action.type) {
         case 'reload':
@@ -41,14 +41,14 @@ const initialState = {
         break;
         case "nextStep":
 
-            let step = state.steps[state.currentStep];
+            step = state.steps[state.currentStep];
 
             state.currentValue = state.currentValue === undefined ||  state.currentValue === null ? '' : state.currentValue;
+            
             if (step.required && (state.currentValue.length < 1) && ['input', 'single-choice'].includes(step.type)) {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
 
-            console.log(step.required, step.type === 'multiple-choice', state.currentValue, state.currentValue.length);
             if (step.required && step.type === 'multiple-choice' && (state.currentValue === null || state.currentValue.length === 0)) {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
@@ -67,8 +67,22 @@ const initialState = {
                 return {...state, 'isLoaded': false, 'stopApp': true};
             }
 
+            let nextStep = state.steps[nextStepNumber];
             state.answers[state.currentStep] = state.currentValue;
-            state.currentValue = '';
+
+
+            if(state.answers[nextStepNumber] === undefined) {
+                state.currentValue = {
+                    'input' : '',
+                    'single-choice' : [],
+                    'multiple-choice': [],
+                    'numeric': step.predefinedValue !== undefined ? step.predefinedValue : 0,
+                }[nextStep.type];    
+                console.log('set up empty value');
+
+            }
+
+
             state = {...state, currentStep: nextStepNumber, error: ''};
             saveState('form', window.userId, state);
             return state;
@@ -86,7 +100,9 @@ const initialState = {
         break;
         case 'submitSingleChoice':
             state.answers[state.currentStep] = action.variant.value;
-            console.log(state);
+
+            step = state.steps[state.currentStep];
+
             state =  {
                 ...state,
                 currentStep: state.currentStep + 1,

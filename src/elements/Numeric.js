@@ -1,5 +1,6 @@
 import React from 'react';
 import Error from '../containers/Error';
+import FormTitle from '../containers/FormTitle';
 
 
 class Numeric extends React.Component
@@ -11,14 +12,11 @@ class Numeric extends React.Component
         this.increment = this.increment.bind(this);
         this.decrement = this.decrement.bind(this);
 
-        let currentValue = this.props.parent.getCurrentValue() > 0 ? this.props.parent.getCurrentValue() : 0;
-        this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': currentValue});
-        this.forceUpdate();
     }
 
-    componentDidMount(){
-        this.nameInput.focus();
-      }
+    // componentDidMount(){
+    //     this.nameInput.focus();
+    // }
 
     handleChange(event)
     {
@@ -47,19 +45,10 @@ class Numeric extends React.Component
     {
         return        <div>    
             
-                
-        <div className="form__main-title">
-        <h2>{this.props.config.title}
-        <span>{this.props.config.required ? '*' : ''}</span>         <div style={{'font-size': '12px', 'color': "#CCC"}}>Tip: lick on the number to edit manually</div>
-
-
-        
-        </h2>
-    </div>
-
-        <div className="form__group form__group--calc">
+            <FormTitle step={this.props.config}/>
+                    <div className="form__group form__group--calc">
         <button className="form__btn-calc"onClick={this.decrement}  type="button">-</button>
-        <input  ref={(input) => { this.nameInput = input; }}  className="form__input-calc" type="text" onChange={this.handleChange} value={this.props.parent.getCurrentValue()}/>
+        <input  ref={(input) => { this.nameInput = input;  if (input !== null) {input.focus();}}}  className="form__input-calc" type="text" onChange={this.handleChange} value={this.props.parent.getCurrentValue()}/>
         <button className="form__btn-calc" onClick={this.increment} type="button">+</button>
      </div>
      
