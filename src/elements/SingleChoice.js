@@ -30,24 +30,31 @@ class SingleChoice extends React.Component
 
     handleOnClick(variant)
     {
-        if (variant.value !== null) {
+        if (variant.value !== null && !variant.custom) {
+            this.props.parent.dispatch({ type: 'changeCurrentValue', 'currentValue': variant.value});
             this.props.parent.dispatch({ type: 'nextStep', 'step': this.props.config, value: variant.value});
-            console.log({ type: 'nextStep', 'step': this.props.config, value: variant.value});
             return ;
         }
 
         const variants = this.props.config.variants;
-        this.props.config.variants = this.props.config.variants.reduce(function (acc, value) {
-            if (value.title === variant.title && variant.value === null) {
-                variant.showMyVariant = !variants.reduce(function(acc, value) {
-                    variant.value ='';
-                    acc.push(value.title);
-                    return acc;
-                }, []).includes(value.value);
+        this.props.config.variants = this.props.config.variants.reduce( (acc, value) => {
 
+            if (value.showMyVariant) {
+                value.value = '';
+                value.showMyVariant = false;
                 acc.push(value);
                 return acc;
             }
+
+            if (value.title === variant.title && !variant.showMyVariant && variant.custom) {
+                value.checked = true;
+                value.showMyVariant = true;
+                value.value = '';
+                acc.push(value);
+                this.props.parent.dispatch({ type: 'changeCurrentValue', 'currentValue': ''});
+                return acc;
+            }
+            value.checked = variant.value === value.value;
 
             acc.push(value);
             return acc;

@@ -45,6 +45,7 @@ const initialState = {
 
             state.currentValue = state.currentValue === undefined ||  state.currentValue === null ? '' : state.currentValue;
             
+            console.log(action);
             if (step.required && (state.currentValue.length < 1) && ['input', 'single-choice'].includes(step.type)) {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
