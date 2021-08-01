@@ -60,6 +60,8 @@ const initialState = {
 
             let nextStepNumber = state.currentStep + 1;
             console.log(nextStepNumber, state.currentStep, state);
+            state.answers[state.currentStep] = state.currentValue;
+
 
             if (nextStepNumber === step.total) {
                 submitForm(window.userId, submitStateTransformer(state)).then(() => {
@@ -69,7 +71,6 @@ const initialState = {
             }
 
             let nextStep = state.steps[nextStepNumber];
-            state.answers[state.currentStep] = state.currentValue;
 
 
             if(state.answers[nextStepNumber] === undefined) {
