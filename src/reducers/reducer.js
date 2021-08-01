@@ -77,10 +77,8 @@ const initialState = {
                     'input' : '',
                     'single-choice' : [],
                     'multiple-choice': [],
-                    'numeric': step.predefinedValue !== undefined ? step.predefinedValue : 0,
-                }[nextStep.type];    
-                console.log('set up empty value');
-
+                    'numeric': nextStep.predefinedValue !== undefined ? nextStep.predefinedValue : 0,
+                }[nextStep.type];
             }
 
 
