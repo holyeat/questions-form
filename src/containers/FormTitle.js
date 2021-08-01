@@ -13,6 +13,9 @@ class FormTitle extends React.Component
         if (this.props.step.type === 'numeric') {
             tip = 'Tip: lick on the number to edit manually';
         }
+        if (typeof this.props.step.description !== 'undefinded') {
+            tip = this.props.step.description;
+        } 
 
         return <div className="form__main-title">
             <h2>{this.props.step.title}
