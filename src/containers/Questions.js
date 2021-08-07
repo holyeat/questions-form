@@ -58,6 +58,13 @@ class Questions extends React.Component {
         return this.props.state.getState().currentValue;
     }
 
+    isScrollHeader()
+    {
+        let scroll = this.props.state.getState().isScrollHeader;
+        return scroll !== undefined && scroll;
+    }
+
+
     previousStep()
     {
         this.props.state.dispatch({ type: 'previousStep' });

@@ -5,12 +5,14 @@ class FormHeader extends React.Component
     constructor(props)
     {
         super(props);
+        this.once = false;
     }
 
     previousStep(event)
     {
         event.preventDefault();
         this.props.parent.previousStep();
+
         return false;
     }
 
@@ -23,7 +25,7 @@ class FormHeader extends React.Component
             percent = 0;
         }
 
-        return <div className="form__header">
+        return <div className="form__header" ref={(input) => { this.nameInput = input;  if (input !== null && this.props.parent.isScrollHeader()) {input.scrollIntoView();}}}>
         <div className="form__header-title">
             <h3>Step {this.props.step.sectionNumber}:<span>{this.props.step.section}</span>
             

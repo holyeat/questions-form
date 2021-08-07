@@ -82,8 +82,10 @@ const initialState = {
                 }[nextStep.type];
             }
 
-
-            state = {...state, currentStep: nextStepNumber, error: ''};
+            if (state.answers[nextStepNumber] !== undefined && state.answers[nextStepNumber].length > 0) {
+                state.currentValue = state.answers[nextStepNumber];
+            }
+            state = {...state, currentStep: nextStepNumber, error: '', 'isScrollHeader': true};
             saveState('form', window.userId, state);
             return state;
         case "previousStep":
@@ -92,10 +94,10 @@ const initialState = {
                 }
                 let stepNumber = state.currentStep - 1;
 
-                return {...state, currentStep: stepNumber, currentValue: state.answers[stepNumber], error: ''};
+                return {...state, currentStep: stepNumber, currentValue: state.answers[stepNumber], error: '', 'isScrollHeader': true};
         break;
         case 'changeCurrentValue':
-                state =  {...state, currentValue: action.currentValue};
+                state =  {...state, currentValue: action.currentValue, 'isScrollHeader': false};
                 return state;
         break;
         case 'submitSingleChoice':
@@ -114,7 +116,7 @@ const initialState = {
                 submitForm(window.userId, submitStateTransformer(state)).then(() => {
                     window.location.href = window.config.lastStep;
                 });
-                return {...state, 'isLoaded': false, 'stopApp': true};
+                return {...state, 'isLoaded': false, 'stopApp': true, 'isScrollHeader': true};
             }
 
 

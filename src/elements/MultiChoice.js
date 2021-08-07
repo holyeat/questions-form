@@ -10,7 +10,6 @@ class MultiChoice extends React.Component
     {
         super(props);
         this.handleChange=this.handleChange.bind(this);
-
     }
 
     handleChange(event)
@@ -71,7 +70,6 @@ class MultiChoice extends React.Component
     render()
     {
 
-        console.log(this.props.config);
         return                 <div className="form__main"> <div className="form__main-text">
             <ul>
                 <li><span>*</span> - Required</li>

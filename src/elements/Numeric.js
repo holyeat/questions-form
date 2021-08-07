@@ -20,6 +20,9 @@ class Numeric extends React.Component
 
     handleChange(event)
     {
+        if (this.props.parent.getCurrentValue() === 0) {
+            event.target.value = event.target.value.replace('0', '');
+        }
         this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': event.target.value});
         this.forceUpdate();
     }
