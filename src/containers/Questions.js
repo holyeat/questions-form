@@ -3,6 +3,8 @@ import CurrentQuestion from '../containers/CurrentQuestion';
 import FormHeader from '../containers/FormHeader';
 import FormFooter from '../containers/FormFooter';
 import clearForm from '../middleware/clearForm';
+import sendSms from '../middleware/sendSms';
+import checkSms from '../middleware/checkSms';
 
 class Questions extends React.Component {
 
@@ -11,7 +13,11 @@ class Questions extends React.Component {
     constructor(props)
     {
         super(props);
-        this.props.state.subscribe(() => this.props.state.getState());
+        const store = this.props.state;
+        store.subscribe(() => {
+            this.forceUpdate();
+        });
+
 
     }
 
@@ -23,10 +29,10 @@ class Questions extends React.Component {
 
     render(params) {
         const store = this.props.state;
-        store.subscribe(() => {
-            this.forceUpdate();
-        });
-        
+        // store.subscribe(() => {
+        //     this.forceUpdate();
+        // });
+
 
         let questionsList = window.config;
         let currentStep = this.props.state.getState().steps[this.props.state.getState().currentStep];
@@ -72,7 +78,45 @@ class Questions extends React.Component {
 
     submit(value)
     {
-        this.props.state.dispatch({ type: 'nextStep', 'step': this.currentStep, value: value});
+        let number = this.currentValue();
+        if (this.currentStep.type === 'phone_number' && !number.includes('unconfirmed-')) {
+
+            if (this.props.state.getState().verifiedNumbers.includes(number)) {
+                this.props.state.dispatch({ type: 'changeCurrentValue', currentValue: number});
+                this.props.state.dispatch({ type: 'nextStep', value: number});
+                this.forceUpdate();
+                return ;
+            }
+
+            sendSms(value);
+            this.props.state.dispatch({ type: 'phoneNumberSubmit'});
+            return ;
+        }
+        if (this.currentStep.type === 'phone_number' && this.currentValue().includes('unconfirmed-')) {
+
+            this.props.state.dispatch({'type': 'load'});
+
+            checkSms(this.currentValue().replace('unconfirmed-', ''),  this.props.state.getState().confirmationCode).then(
+                response =>  {
+                    this.props.state.dispatch({'type': 'ready'});
+                    let number = this.currentValue().replace('unconfirmed-', '');
+
+                    if (response.confirmed) {
+                        let value = this.currentValue().replace('unconfirmed-', '');
+                        this.props.state.dispatch({'type': 'changeCurrentValue', currentValue: value});
+                        this.props.state.dispatch({'type': 'nextStep', 'value': number});
+
+                        this.props.state.dispatch({ type: 'addVerifiedNumbers', 'verifiedNumber': number});
+
+                    } else {
+                        this.props.state.dispatch({'type': 'error', 'error': 'Incorrect confirmation code'});
+                    }
+                }
+            );
+            return ;
+        }
+
+        this.props.state.dispatch({ type: 'nextStep', 'step': this.currentStep, 'value': value});
     }
 }
 

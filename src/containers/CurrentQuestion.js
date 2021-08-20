@@ -3,6 +3,7 @@ import SingleChoice from '../elements/SingleChoice';
 import TextElement from '../elements/TextElement';
 import MultiChoice from '../elements/MultiChoice';
 import Numeric from '../elements/Numeric';
+import PhoneNumber from '../elements/PhoneNumber';
 
 class CurrentQuestion extends React.Component {
     value;
@@ -13,6 +14,7 @@ class CurrentQuestion extends React.Component {
         this.value = '';
 
         this.props.state.subscribe(() => this.props.state.getState());
+        this.state = this.props.state;
     }
 
     componentDidMount() {
@@ -35,7 +37,10 @@ class CurrentQuestion extends React.Component {
                 break;    
              case 'numeric': 
                 contents = <Numeric config={currentStep} parent={this}/>
-                break;    
+                break;
+            case 'phone_number': 
+                contents = <PhoneNumber config={currentStep} parent={this}/>
+                break;        
 
             default:    
         }

@@ -80,11 +80,7 @@ class SingleChoice extends React.Component
     {
 
         console.log(this.props.config);
-        return                 <div className="form__main"> <div className="form__main-text">
-            <ul>
-                <li><span>*</span> - Required</li>
-            </ul>
-        </div>
+        return                 <div className="form__main">
         <FormTitle step={this.props.config}/>
         <div className="form__group">
                 <div className="from__group-radio">

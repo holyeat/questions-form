@@ -14,6 +14,7 @@ const initialState = {
   
   // Use the initialState as a default value
   export default function appReducer(state = initialState, action) {
+      console.log(action);
 
     const initialState = {
         'currentStep': 0,
@@ -22,6 +23,7 @@ const initialState = {
         'currentValue': '',
         'error': '',
         'isLoaded': false,
+        'verifiedNumbers': [],
     };
       
     let step;
@@ -39,13 +41,16 @@ const initialState = {
         case 'ready':
             return {...state, 'isLoaded': true};
         break;
+        case 'error':
+            return {...state, error: action.error};
+        break;
+
         case "nextStep":
 
             step = state.steps[state.currentStep];
 
             state.currentValue = state.currentValue === undefined ||  state.currentValue === null ? '' : state.currentValue;
             
-            console.log(action);
             if (step.required && (state.currentValue.length < 1) && ['input', 'single-choice'].includes(step.type)) {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
@@ -54,8 +59,16 @@ const initialState = {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
 
+            if (step.required && step.type === 'phone_number' && state.currentValue === 0) {
+                return {...state, currentStep: state.currentStep, error: 'This field is required'};
+            }
+
             if (step.required && step.type === 'numeric' && state.currentValue === 0) {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
+            }
+
+            if (step.type === 'phone_number' && state.currentValue.includes('unconfirmed-')) {
+                return {...state, currentStep: state.currentStep};
             }
 
             let nextStepNumber = state.currentStep + 1;
@@ -79,6 +92,7 @@ const initialState = {
                     'single-choice' : [],
                     'multiple-choice': [],
                     'numeric': nextStep.predefinedValue !== undefined ? nextStep.predefinedValue : 0,
+                    'phone_number': '',
                 }[nextStep.type];
             }
 
@@ -100,6 +114,27 @@ const initialState = {
                 state =  {...state, currentValue: action.currentValue, 'isScrollHeader': false};
                 return state;
         break;
+        case 'phoneNumberSubmit':
+            state =  {...state, currentValue: 'unconfirmed-' + state.currentValue};
+            saveState('form', window.userId, state);
+            return state;
+        break;
+        case 'phoneNumberPreviousStep':
+            state =  {...state, currentValue: ''};
+            saveState('form', window.userId, state);
+            return state;
+        break;
+
+        case 'changeConfirmationCode':
+            state =  {...state, confirmationCode: action.confirmationCode};
+            return state;
+        break;
+        case 'addVerifiedNumbers':
+            state.verifiedNumbers.push(action.verifiedNumber);
+            saveState('form', window.userId, state);
+            return state;
+        break;
+
         case 'submitSingleChoice':
             state.answers[state.currentStep] = action.variant.value;
 

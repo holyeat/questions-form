@@ -70,11 +70,7 @@ class MultiChoice extends React.Component
     render()
     {
 
-        return                 <div className="form__main"> <div className="form__main-text">
-            <ul>
-                <li><span>*</span> - Required</li>
-            </ul>
-        </div>
+        return                 <div className="form__main"> 
 
         <FormTitle step={this.props.config}/>
 
