@@ -88,10 +88,13 @@ class Questions extends React.Component {
                 return ;
             }
 
+
             sendSms(value);
             this.props.state.dispatch({ type: 'phoneNumberSubmit'});
             return ;
         }
+
+
         if (this.currentStep.type === 'phone_number' && this.currentValue().includes('unconfirmed-')) {
 
             this.props.state.dispatch({'type': 'load'});

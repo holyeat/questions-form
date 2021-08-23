@@ -59,20 +59,12 @@ window.config = {
       {
         "title": "Personal information",
         "questions": [
-        {
-            "type": "phone_number",
-            "title": "Your phone number",
-            "placeholder": "+65 3655 4433",
-            "required": true,
-            "name": "phone_number",
-            "description": "Your phone number required to reach you if we will have a problems with communication via E-mail. We do not share this data with third parties."
-          },
           {
             "type": "input",
             "title": "Choose your title (Mr, Ms, Mrs, Dr, Sir…)",
             "placeholder": "Mrs or Mr, Dr, etc",
             "required": false,
-            "name": "your_title",
+            "name": "your_title"
           },
           {
             "type": "input",
@@ -88,31 +80,23 @@ window.config = {
             "name": "age"
           },
           {
-             "type": "single-choice",
+            "type": "single-choice",
             "name": "gender",
-             "title": "Choose your gender",
-             "variants": [
-               {
-                 "value": "Male"
-               },
-               {
-                 "value": "Female"
-               },
-               {
-                 "title": "My variant",
-                 "value": null,
-                 "custom": true
-               }
-             ],
-             "required": true
-          },
-          {
-            "type": "input",
-            "title": "Your phone number",
-            "placeholder": "+65 3655 4433",
-            "required": true,
-            "name": "phone_number",
-            "description": "Your phone number required to reach you if we will have a problems with communication via E-mail. We do not share this data with third parties."
+            "title": "Choose your gender",
+            "variants": [
+              {
+                "value": "Male"
+              },
+              {
+                "value": "Female"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
+              }
+            ],
+            "required": true
           }
         ]
       },
@@ -130,30 +114,31 @@ window.config = {
             "title": "How tall are you (cm)?",
             "required": true,
             "name": "tall",
-            "predefinedValue": 170,
+            "predefinedValue": 170
           },
           {
             "type": "numeric",
             "title": "What are your waist measurements (in cm)?",
-            "required": true,
+            "required": false,
             "name": "waist"
           },
           {
             "type": "numeric",
             "title": "What are your hips measurements (in cm)?",
-            "required": true,
+            "required": false,
             "name": "hips"
           },
           {
             "type": "numeric",
             "title": "What are your chest measurements (in cm)?",
-            "required": true,
+            "required": false,
             "name": "chest"
           },
           {
-            "type": "numeric",
+            "type": "input",
             "title": "Do you have smart scales? Which ones?",
-            "required": true,
+            "required": false,
+            "placeholder": "",
             "name": "scales"
           },
           {
@@ -169,16 +154,18 @@ window.config = {
         "title": "Your lifestyle",
         "questions": [
           {
-            "type": "numeric",
+            "type": "input",
             "title": "Are you involved in any sports activities? If so, please specify",
-            "required": false,
-            "name": "sports_activities"
+            "required": true,
+            "name": "sports_activities",
+            "placeholder": "No"
           },
           {
             "type": "numeric",
             "title": "How many hours do you sleep daily?",
             "required": true,
-            "name": "sleep_daily"
+            "name": "sleep_daily",
+            "predefinedValue": 8
           },
           {
             "type": "single-choice",
@@ -244,33 +231,33 @@ window.config = {
             "type": "input",
             "title": "Do you have any problems with the thyroid gland? If yes, please specify",
             "required": true,
-            "placeholder": "",
+            "placeholder": "No",
             "name": "thyroid_gland"
           },
           {
             "type": "input",
             "title": "Have you been diagnosed with diseases of the gastrointestinal tract? If yes, please specify",
             "required": true,
-            "placeholder": "",
+            "placeholder": "No",
             "name": "gastrointestinal"
           },
           {
             "type": "input",
-            "placeholder": "",
+            "placeholder": "No",
             "title": "Do you have any food allergies? If yes, please specify?",
             "required": true,
             "name": "allergies"
           },
           {
             "type": "input",
-            "placeholder": "",
+            "placeholder": "No",
             "title": "Have you been diagnosed with diabetes? If yes, could you please indicate the type",
             "required": true,
             "name": "diabetes"
           },
           {
             "type": "input",
-            "placeholder": "",
+            "placeholder": "No",
             "title": "Are there any other health-related issues we should be aware of?",
             "required": false,
             "name": "health_issues"
@@ -292,15 +279,18 @@ window.config = {
           },
           {
             "type": "single-choice",
-            "title": "Are you ready to cook every day to achieve the goals? ",
+            "title": "You plan to cook:",
             "required": true,
             "name": "cook_everyday",
             "variants": [
               {
-                "value": "Yes"
+                "value": "all meals for the day at once"
               },
               {
-                "value": "No"
+                "value": "cook before meals"
+              },
+              {
+                "value": "I will have help with the cooking"
               },
               {
                 "title": "My variant",
@@ -362,6 +352,11 @@ window.config = {
               },
               {
                 "value": "duck"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
               }
             ],
             "required": true
@@ -382,6 +377,11 @@ window.config = {
               },
               {
                 "value": "seaweed"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
               }
             ],
             "required": true
@@ -414,6 +414,11 @@ window.config = {
               },
               {
                 "value": "dorado (Mahi-mahi)"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
               }
             ],
             "required": true
@@ -442,9 +447,6 @@ window.config = {
                 "value": "Apricot"
               },
               {
-                "value": "Passionfruit"
-              },
-              {
                 "value": "Apple"
               },
               {
@@ -454,16 +456,10 @@ window.config = {
                 "value": "Melon"
               },
               {
-                "value": "Grapes"
-              },
-              {
                 "value": "Mango"
               },
               {
                 "value": "Peach"
-              },
-              {
-                "value": "Apricot"
               },
               {
                 "value": "Avocado"
@@ -473,6 +469,11 @@ window.config = {
               },
               {
                 "value": "Dragonfruit"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
               }
             ],
             "required": true
@@ -493,6 +494,11 @@ window.config = {
               },
               {
                 "value": "dates"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
               }
             ],
             "required": true
@@ -535,6 +541,11 @@ window.config = {
               },
               {
                 "value": "Mushrooms"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
               }
             ],
             "required": true
@@ -587,6 +598,11 @@ window.config = {
               },
               {
                 "value": "buckwheat"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
               }
             ],
             "required": true
@@ -619,6 +635,11 @@ window.config = {
               },
               {
                 "value": "hazelnut"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
               }
             ],
             "required": true
@@ -641,6 +662,11 @@ window.config = {
               },
               {
                 "value": "fried"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
               }
             ],
             "required": true
@@ -648,7 +674,7 @@ window.config = {
           {
             "type": "multiple-choice",
             "name": "dairy_prefer",
-            "title": "What eggs do you prefer",
+            "title": "What dairy do you prefer?",
             "variants": [
               {
                 "value": "cottage cheese"
@@ -670,6 +696,11 @@ window.config = {
               },
               {
                 "value": "milk"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
               }
             ],
             "required": true
@@ -689,6 +720,19 @@ window.config = {
             "name": "ask_questions"
           }
 
+        ]
+      },
+      {
+        "title": "Contact information",
+        "questions": [
+          {
+            "type": "phone_number",
+            "title": "Your phone number",
+            "placeholder": "+65 3655 4433",
+            "required": true,
+            "name": "phone_number",
+            "description": "Your phone number is required to reach you if we have problems with communication via e-mail. We do not share this data with the third parties."
+          }
         ]
       }
 

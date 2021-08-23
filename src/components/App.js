@@ -11,7 +11,10 @@ class App extends React.Component {
 
     constructor(props)
     {
+
+
         super(props);
+        
         this.state = createStore(reducer);
         this.state.subscribe(() => {
             this.forceUpdate();

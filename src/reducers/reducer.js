@@ -10,6 +10,7 @@ const initialState = {
     'currentValue': '',
     'error': '',
     'isLoaded': false,
+    'verifiedNumbers': [],
 };
   
   // Use the initialState as a default value
@@ -54,6 +55,7 @@ const initialState = {
             if (step.required && (state.currentValue.length < 1) && ['input', 'single-choice'].includes(step.type)) {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
+
 
             if (step.required && step.type === 'multiple-choice' && (state.currentValue === null || state.currentValue.length === 0)) {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
