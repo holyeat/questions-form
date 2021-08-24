@@ -25,7 +25,7 @@ class FormTitle extends React.Component
         </div>
             <div className="form__main-title">
             <h2>{this.props.step.title}
-            <span style={this.props.step.required ? {} : {'fontSize': '10px'}}>{this.props.step.required ? '*' : '(optional)'}</span>
+            <span style={this.props.step.required ? {} : {'fontSize': '10px'}}>{this.props.step.required ? '*' : ''}</span>
             <div style={{'fontSize': '12px', 'color': "#CCC", 'lineHeight':'20px'}}>{tip}</div>
             </h2>
         </div>
