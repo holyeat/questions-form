@@ -109,6 +109,10 @@ const initialState = {
                 if (state.currentStep === 0) {
                     return state;
                 }
+                if (state.currentValue !== null && state.currentValue.length > 0) {
+                    state.answers[state.currentStep] = state.currentValue;
+                }
+
                 let stepNumber = state.currentStep - 1;
 
                 return {...state, currentStep: stepNumber, currentValue: state.answers[stepNumber], error: '', 'isScrollHeader': true};
