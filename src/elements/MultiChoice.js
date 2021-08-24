@@ -62,14 +62,13 @@ class MultiChoice extends React.Component
         }, []);
 
 
-        console.log(currentValue);
         this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': currentValue});
         this.forceUpdate();
     }
 
+
     render()
     {
-
         return                 <div className="form__main"> 
 
         <FormTitle step={this.props.config}/>

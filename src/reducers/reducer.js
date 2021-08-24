@@ -17,7 +17,7 @@ const initialState = {
   export default function appReducer(state = initialState, action) {
       console.log(action);
 
-    const initialState = {
+    const initialState = Object.assign({}, {
         'currentStep': 0,
         'steps': questionsTransformer(window.config.questions.steps),
         'answers': [],
@@ -25,7 +25,7 @@ const initialState = {
         'error': '',
         'isLoaded': false,
         'verifiedNumbers': [],
-    };
+    });
       
     let step;
 
@@ -98,6 +98,7 @@ const initialState = {
                 }[nextStep.type];
             }
 
+            console.log(state.answers[nextStepNumber]);
             if (state.answers[nextStepNumber] !== undefined && state.answers[nextStepNumber].length > 0) {
                 state.currentValue = state.answers[nextStepNumber];
             }
@@ -148,7 +149,6 @@ const initialState = {
                 error: '',
             };
             let nextStepNumber2 = state.currentStep + 1;
-            console.log(nextStepNumber2, step.total);
             if (nextStepNumber2 === step.total) {
                 submitForm(window.userId, submitStateTransformer(state)).then(() => {
                     window.location.href = window.config.lastStep;
