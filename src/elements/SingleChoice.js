@@ -9,6 +9,11 @@ class SingleChoice extends React.Component
         super(props);
         this.handleChange=this.handleChange.bind(this);
 
+        this.forceUpdate();
+    }
+
+    loadCurrentValue()
+    {
         const variants = this.props.config.variants;
         let currentValue = this.props.parent.getCurrentValue();
         if (currentValue !== null && currentValue.length > 0) {
@@ -25,7 +30,7 @@ class SingleChoice extends React.Component
                 return acc;
             }, []);
         }
-        this.forceUpdate();
+
     }
 
     handleOnClick(variant)
@@ -59,6 +64,7 @@ class SingleChoice extends React.Component
             acc.push(value);
             return acc;
         }, []);
+
         this.forceUpdate();
     }
 
@@ -78,26 +84,26 @@ class SingleChoice extends React.Component
 
     render()
     {
+        this.loadCurrentValue();
+        let i = 0;
 
-        console.log(this.props.config);
         return                 <div className="form__main">
         <FormTitle step={this.props.config}/>
         <div className="form__group">
-                <div className="from__group-radio">
                     
                        { this.props.config.variants.map((variant) => {
-                           console.log(variant.showMyVariant !== undefined && variant.showMyVariant !== false);
-                            return <div>
-                                <input checked={variant.checked}  type="radio" value={variant.value} name={variant.title} id={variant.title}/>
-                                <label onClick={() => this.handleOnClick(variant)} htmlFor={variant.title}>{variant.custom !== undefined ? variant.title : variant.value}</label>
+                           i ++;
+                           console.log(variant.showMyVariant !== undefined && variant.showMyVariant !== false, variant.checked);
+                            return <div className="from__group-radio">
+                                <input checked={variant.checked ?? false} type="radio" value={variant.value} name={variant.title} id={i + 't'}/>
+                                <label onClick={() => this.handleOnClick(variant)} htmlFor={i + 't'}>{variant.custom !== undefined ? variant.title : variant.value}</label>
                         
 
-                                <input onChange={this.handleChange} value={this.props.parent.getCurrentValue()} style={(variant.showMyVariant !== undefined && variant.showMyVariant !== false) ? {"display":'block'} : {'display': 'none'}} type="text" placeholder="My variant"/>
+                                <input onChange={this.handleChange} value={this.props.parent.getCurrentValue() ?? ''} style={(variant.showMyVariant !== undefined && variant.showMyVariant !== false) ? {"display":'block'} : {'display': 'none'}} type="text" placeholder="My variant"/>
 
                             </div>
                         })}
                     
-                </div>
 
         </div>
 

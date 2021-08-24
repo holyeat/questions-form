@@ -52,20 +52,13 @@
             <script>
 
 window.config = {
-  "lastStep": "/nutritionists",
-  "nextStepUrl": "#",
+  "lastStep": "/nutritionists?skipped=1",
+  "nextStepUrl": "/nutritionists?skipped=1",
   "questions": {
     "steps": [
       {
         "title": "Personal information",
         "questions": [
-          {
-            "type": "input",
-            "title": "Choose your title (Mr, Ms, Mrs, Dr, Sir…)",
-            "placeholder": "Mrs or Mr, Dr, etc",
-            "required": false,
-            "name": "your_title"
-          },
           {
             "type": "input",
             "title": "What is your full name?",
@@ -193,10 +186,29 @@ window.config = {
             "required": true
           },
           {
-            "type": "input",
+            "type": "single-choice",
             "title": "What do you drink during the day and how much?",
             "required": true,
-            "name": "how_many_drink"
+            "name": "how_many_drink",
+            "variants": [
+              {
+                "value": "1 L"
+              },
+              {
+                "value": "1.5 L"
+              },
+              {
+                "value": "2 L"
+              },
+              {
+                "value": "> 2 L"
+              },
+              {
+                "title": "My variant",
+                "value": null,
+                "custom": true
+              }
+            ]
           },
           {
             "type": "single-choice",
@@ -228,39 +240,104 @@ window.config = {
         "title": "Health features",
         "questions": [
           {
-            "type": "input",
+            "type": "single-choice",
             "title": "Do you have any problems with the thyroid gland? If yes, please specify",
             "required": true,
             "placeholder": "No",
-            "name": "thyroid_gland"
+            "name": "thyroid_gland",
+            "variants": [
+              {
+                "value": "Yes"
+              },
+              {
+                "value": "No"
+              },
+              {
+                "title": "Specify",
+                "value": null,
+                "custom": true
+              }
+            ]
           },
           {
-            "type": "input",
+            "type": "single-choice",
             "title": "Have you been diagnosed with diseases of the gastrointestinal tract? If yes, please specify",
             "required": true,
             "placeholder": "No",
-            "name": "gastrointestinal"
+            "name": "gastrointestinal",
+            "variants": [
+              {
+                "value": "Yes"
+              },
+              {
+                "value": "No"
+              },
+              {
+                "title": "Specify",
+                "value": null,
+                "custom": true
+              }
+            ]
           },
           {
-            "type": "input",
+            "type": "single-choice",
             "placeholder": "No",
             "title": "Do you have any food allergies? If yes, please specify?",
             "required": true,
-            "name": "allergies"
+            "name": "allergies",
+            "variants": [
+              {
+                "value": "Yes"
+              },
+              {
+                "value": "No"
+              },
+              {
+                "title": "Specify",
+                "value": null,
+                "custom": true
+              }
+            ]
           },
           {
-            "type": "input",
+            "type": "single-choice",
             "placeholder": "No",
             "title": "Have you been diagnosed with diabetes? If yes, could you please indicate the type",
             "required": true,
-            "name": "diabetes"
+            "name": "diabetes",
+            "variants": [
+              {
+                "value": "Yes"
+              },
+              {
+                "value": "No"
+              },
+              {
+                "title": "Specify",
+                "value": null,
+                "custom": true
+              }
+            ]
           },
           {
-            "type": "input",
+            "type": "single-choice",
             "placeholder": "No",
             "title": "Are there any other health-related issues we should be aware of?",
             "required": false,
-            "name": "health_issues"
+            "name": "health_issues",
+            "variants": [
+              {
+                "value": "Yes"
+              },
+              {
+                "value": "No"
+              },
+              {
+                "title": "Specify",
+                "value": null,
+                "custom": true
+              }
+            ]
           }
         ]
       },
@@ -310,13 +387,6 @@ window.config = {
           {
             "type": "input",
             "placeholder": "",
-            "title": "What oil you use for cooking?",
-            "required": true,
-            "name": "oil_cook"
-          },
-          {
-            "type": "input",
-            "placeholder": "",
             "title": "What is your favorite sweet food (including snacks)?",
             "required": true,
             "name": "sweet_food_snacks"
@@ -325,7 +395,8 @@ window.config = {
             "type": "numeric",
             "title": "How many meals per day you would like to eat?",
             "required": true,
-            "name": "many_meals"
+            "name": "many_meals",
+            "predefinedValue": 4
           },
 
 
