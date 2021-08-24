@@ -3,7 +3,7 @@ import saveState from "../middleware/saveState";
 import submitForm from "../middleware/submitForm";
 import submitStateTransformer from "../transformers/submitStateTransformer";
 
-const initialState = {
+const initialState = Object.assign({}, {
     'currentStep': 0,
     'steps': questionsTransformer(window.config.questions.steps),
     'answers': [],
@@ -11,7 +11,7 @@ const initialState = {
     'error': '',
     'isLoaded': false,
     'verifiedNumbers': [],
-};
+});
   
   // Use the initialState as a default value
   export default function appReducer(state = initialState, action) {
@@ -29,6 +29,7 @@ const initialState = {
       
     let step;
 
+    console.log(state);
     switch (action.type) {
         case 'reload':
             return {...action.state, 'isLoaded': true};

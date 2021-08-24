@@ -14,13 +14,27 @@ class MultiChoice extends React.Component
 
     handleChange(event)
     {
+        let currentValue = this.props.config.variants.reduce((acc, variant) => {
+            if (variant.checked) {
+                acc.push(variant.value);
+            }
+            return acc;
+        }, []);
+
         this.props.config.variants = this.props.config.variants.reduce(function (acc, value) {
             if (value.title !== undefined && value.custom) {
                 value.value = event.target.value;
+                value.checked = true;
             }
             acc.push(value);
             return acc;
-        }, []);
+        }, []);    
+        
+        currentValue.push(event.target.value);
+        this.props.parent.dispatch({'type':'changeCurrentValue' , 'currentValue': currentValue});
+
+        this.syncWithState();
+
         this.forceUpdate();
     }
 
@@ -67,8 +81,19 @@ class MultiChoice extends React.Component
     }
 
 
+    syncWithState() {
+        const currentValue = this.props.parent.getCurrentValue();
+        this.props.config.variants = this.props.config.variants.reduce((acc, variant) => {
+            variant.checked = currentValue.includes(variant.value);
+            acc.push(variant);
+            return acc;
+        }, []);
+    }
+
     render()
     {
+        this.syncWithState();
+
         return                 <div className="form__main"> 
 
         <FormTitle step={this.props.config}/>

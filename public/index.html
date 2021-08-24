@@ -247,15 +247,13 @@ window.config = {
             "name": "thyroid_gland",
             "variants": [
               {
-                "value": "Yes"
-              },
-              {
                 "value": "No"
               },
               {
-                "title": "Specify",
+                "title": "Yes",
                 "value": null,
-                "custom": true
+                "custom": true,
+                "placeholder": ""
               }
             ]
           },
@@ -263,39 +261,33 @@ window.config = {
             "type": "single-choice",
             "title": "Have you been diagnosed with diseases of the gastrointestinal tract? If yes, please specify",
             "required": true,
-            "placeholder": "No",
             "name": "gastrointestinal",
             "variants": [
-              {
-                "value": "Yes"
-              },
               {
                 "value": "No"
               },
               {
-                "title": "Specify",
+                "title": "Yes",
                 "value": null,
-                "custom": true
+                "custom": true,
+                "placeholder": ""
               }
             ]
           },
           {
             "type": "single-choice",
-            "placeholder": "No",
             "title": "Do you have any food allergies? If yes, please specify?",
             "required": true,
             "name": "allergies",
             "variants": [
               {
-                "value": "Yes"
-              },
-              {
                 "value": "No"
               },
               {
-                "title": "Specify",
+                "title": "Yes",
                 "value": null,
-                "custom": true
+                "custom": true,
+                "placeholder": ""
               }
             ]
           },
@@ -307,15 +299,13 @@ window.config = {
             "name": "diabetes",
             "variants": [
               {
-                "value": "Yes"
-              },
-              {
                 "value": "No"
               },
               {
-                "title": "Specify",
+                "title": "Yes",
                 "value": null,
-                "custom": true
+                "custom": true,
+                "placeholder": ""
               }
             ]
           },
@@ -327,15 +317,13 @@ window.config = {
             "name": "health_issues",
             "variants": [
               {
-                "value": "Yes"
-              },
-              {
                 "value": "No"
               },
               {
-                "title": "Specify",
+                "title": "Yes",
                 "value": null,
-                "custom": true
+                "custom": true,
+                "placeholder": ""
               }
             ]
           }
@@ -348,8 +336,8 @@ window.config = {
         "title": "Goals and food preferences",
         "questions": [
           {
-            "type": "input",
-            "title": "What is your desired weight?",
+            "type": "numeric",
+            "title": "What is your desired weight? (kg)",
             "placeholder": "",
             "required": false,
             "name": "desired_weight"
