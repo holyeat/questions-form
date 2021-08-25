@@ -89,7 +89,7 @@ class Questions extends React.Component {
             }
 
 
-            sendSms(value);
+            sendSms(number.replace('unconfirmed-', ''));
             this.props.state.dispatch({ type: 'phoneNumberSubmit'});
             return ;
         }
