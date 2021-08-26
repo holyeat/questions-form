@@ -102,7 +102,7 @@ class Questions extends React.Component {
             }
 
 
-            sendSms(parsedNumber.getURI().replace('tel:'));
+            sendSms(parsedNumber.getURI().replace('tel:', ''));
             this.props.state.dispatch({ type: 'phoneNumberSubmit'});
             return ;
         }
