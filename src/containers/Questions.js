@@ -5,6 +5,7 @@ import FormFooter from '../containers/FormFooter';
 import clearForm from '../middleware/clearForm';
 import sendSms from '../middleware/sendSms';
 import checkSms from '../middleware/checkSms';
+import parsePhoneNumber from 'libphonenumber-js'
 
 class Questions extends React.Component {
 
@@ -73,6 +74,12 @@ class Questions extends React.Component {
 
     previousStep()
     {
+        let number = this.currentValue();
+        if (this.currentStep.type === 'phone_number' && number.includes('unconfirmed-')) {
+            this.props.state.dispatch({'type':'phoneNumberPreviousStep'});
+            return ;
+        }
+
         this.props.state.dispatch({ type: 'previousStep' });
     }
 
@@ -80,6 +87,12 @@ class Questions extends React.Component {
     {
         let number = this.currentValue();
         if (this.currentStep.type === 'phone_number' && !number.includes('unconfirmed-')) {
+
+            let parsedNumber = parsePhoneNumber(number);
+            if (parsedNumber === undefined || !parsedNumber.isValid()) {
+                this.props.state.dispatch({ type: 'error', 'error': 'Invalid phone number. Please, use international format with plus, like a +61289876544'});
+                return ;
+            }
 
             if (this.props.state.getState().verifiedNumbers.includes(number)) {
                 this.props.state.dispatch({ type: 'changeCurrentValue', currentValue: number});
@@ -89,7 +102,7 @@ class Questions extends React.Component {
             }
 
 
-            sendSms(number.replace('unconfirmed-', ''));
+            sendSms(parsedNumber.formatInternational().replace(' ', ''));
             this.props.state.dispatch({ type: 'phoneNumberSubmit'});
             return ;
         }

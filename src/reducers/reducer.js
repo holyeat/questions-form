@@ -123,7 +123,7 @@ const initialState = Object.assign({}, {
                 return state;
         break;
         case 'phoneNumberSubmit':
-            state =  {...state, currentValue: 'unconfirmed-' + state.currentValue};
+            state =  {...state, currentValue: 'unconfirmed-' + state.currentValue, 'error': ''};
             saveState('form', window.userId, state);
             return state;
         break;
