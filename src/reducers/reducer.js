@@ -128,7 +128,7 @@ const initialState = Object.assign({}, {
             return state;
         break;
         case 'phoneNumberPreviousStep':
-            state =  {...state, currentValue: ''};
+            state =  {...state, currentValue: '', 'error': ''};
             saveState('form', window.userId, state);
             return state;
         break;
