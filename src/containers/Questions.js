@@ -88,7 +88,7 @@ class Questions extends React.Component {
         let number = this.currentValue();
         if (this.currentStep.type === 'phone_number' && !number.includes('unconfirmed-')) {
 
-            let parsedNumber = parsePhoneNumber(number);
+            let parsedNumber = parsePhoneNumber(number, window.countryCode);
             if (parsedNumber === undefined || !parsedNumber.isValid()) {
                 this.props.state.dispatch({ type: 'error', 'error': 'Invalid phone number. Please, use international format with plus, like a +61289876544'});
                 return ;
