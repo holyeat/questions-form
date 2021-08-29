@@ -94,9 +94,9 @@ class Questions extends React.Component {
                 return ;
             }
             number = parsedNumber.getURI().replace('tel:', '');
-
+            this.props.state.dispatch({ type: 'changeCurrentValue', currentValue: number});
+            
             if (this.props.state.getState().verifiedNumbers.includes(number)) {
-                this.props.state.dispatch({ type: 'changeCurrentValue', currentValue: number});
                 this.props.state.dispatch({ type: 'nextStep', value: number});
                 this.forceUpdate();
                 return ;
