@@ -93,6 +93,7 @@ class Questions extends React.Component {
                 this.props.state.dispatch({ type: 'error', 'error': 'Invalid phone number. Please, use international format with plus, like a +61289876544'});
                 return ;
             }
+            number = parsedNumber.getURI().replace('tel:', '');
 
             if (this.props.state.getState().verifiedNumbers.includes(number)) {
                 this.props.state.dispatch({ type: 'changeCurrentValue', currentValue: number});
@@ -102,7 +103,7 @@ class Questions extends React.Component {
             }
 
 
-            sendSms(parsedNumber.getURI().replace('tel:', ''));
+            sendSms(number);
             this.props.state.dispatch({ type: 'phoneNumberSubmit'});
             return ;
         }
