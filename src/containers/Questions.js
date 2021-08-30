@@ -28,6 +28,18 @@ class Questions extends React.Component {
     }
 
 
+    cancelClean() {
+        this.props.state.dispatch({'type': 'cancelClean'});
+    }
+
+    confirmClean() {
+        this.props.state.dispatch({'type': 'load'});
+
+        clearForm('form', window.userId).then(() =>  {
+            this.props.state.dispatch({'type': 'clear-confirm'});
+        });
+    }
+
     render(params) {
         const store = this.props.state;
         // store.subscribe(() => {
@@ -41,6 +53,17 @@ class Questions extends React.Component {
         console.log(currentStep);
 
 
+        if (this.props.state.getState().showClearState) {
+            return <form className="form"  style={{'textAlign':'center'}} onSubmit={this.onFormSubmit.bind(this)}>
+                <h2>Confirm clear all answers</h2>
+                <div className="confirm-container">
+                    <a href="#" onClick={this.confirmClean.bind(this)} className="form__btn2 form__btn2-red">Confirm</a>
+                    <a href="#" onClick={this.cancelClean.bind(this)} className="form__btn2">Cancel</a>
+                </div>
+
+                </form>
+        }
+
         return <form className="form"  onSubmit={this.onFormSubmit.bind(this)}>
             <FormHeader step={currentStep} parent={this}/>
             <CurrentQuestion state={this.props.state} step={currentStep}/>
@@ -52,12 +75,8 @@ class Questions extends React.Component {
 
     clearForm()
     {
-        this.props.state.dispatch({'type': 'load'});
         this.forceUpdate();
-        clearForm('form', window.userId).then(() =>  {
-            this.props.state.dispatch({'type': 'clear'});
-            this.forceUpdate();
-        });
+        this.props.state.dispatch({'type': 'clear'});
     }
 
     currentValue()
@@ -95,7 +114,7 @@ class Questions extends React.Component {
             }
             number = parsedNumber.getURI().replace('tel:', '');
             this.props.state.dispatch({ type: 'changeCurrentValue', currentValue: number});
-            
+
             if (this.props.state.getState().verifiedNumbers.includes(number)) {
                 this.props.state.dispatch({ type: 'nextStep', value: number});
                 this.forceUpdate();

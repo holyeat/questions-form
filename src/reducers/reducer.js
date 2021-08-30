@@ -25,6 +25,7 @@ const initialState = Object.assign({}, {
         'error': '',
         'isLoaded': false,
         'verifiedNumbers': [],
+        'showClearState': false,
     });
       
     let step;
@@ -38,7 +39,12 @@ const initialState = Object.assign({}, {
                 return {...state, 'isLoaded': false};
         break;
         case 'clear':
-            return {...initialState, 'isLoaded': true};
+            return {...state, 'isLoaded': true, 'showClearState': true};
+        case 'cancelClean': 
+            return {...state, 'isLoaded': true, 'showClearState': false, 'isScrollHeader': true};
+        break;
+        case 'clear-confirm':
+            return {...initialState, 'isLoaded': true, 'isScrollHeader': true};
         break;
         case 'ready':
             return {...state, 'isLoaded': true};
