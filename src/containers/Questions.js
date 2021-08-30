@@ -55,7 +55,7 @@ class Questions extends React.Component {
 
         if (this.props.state.getState().showClearState) {
             return <form className="form"  style={{'textAlign':'center'}} onSubmit={this.onFormSubmit.bind(this)}>
-                <h2>Confirm clear all answers</h2>
+                <h2>Confirm clearing all answers</h2>
                 <div className="confirm-container">
                     <a href="#" onClick={this.confirmClean.bind(this)} className="form__btn2 form__btn2-red">Confirm</a>
                     <a href="#" onClick={this.cancelClean.bind(this)} className="form__btn2">Cancel</a>
