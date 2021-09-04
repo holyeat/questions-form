@@ -14,6 +14,9 @@ function submitStateTransformer(state)
         };
     }
 
+    readyAnswers.mode = typeof window.config.mode !== 'undefined' ? window.config.mode : 'self-service';
+    
+
     return readyAnswers;
 }
 
