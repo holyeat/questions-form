@@ -24,7 +24,7 @@ class FormFooter extends React.Component
     {
         return                 <div  className="form__footer">
 
-        <a className="form__footer-text" onClick={this.clearForm.bind(this)} href="#" style={{'color': 'red'}}>Clear all answers</a>
+        <a className="form__footer-text clear-all" onClick={this.clearForm.bind(this)} href="#" style={{'color': 'red'}}>Clear all answers</a>
         <a className="form__btn" onClick={this.submit.bind(this)}>Next</a>
         </div>;
     }

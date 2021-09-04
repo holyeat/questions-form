@@ -3,6 +3,12 @@ import saveState from "../middleware/saveState";
 import submitForm from "../middleware/submitForm";
 import submitStateTransformer from "../transformers/submitStateTransformer";
 
+function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+
 const initialState = Object.assign({}, {
     'currentStep': 0,
     'steps': questionsTransformer(window.config.questions.steps),
@@ -59,6 +65,12 @@ const initialState = Object.assign({}, {
 
             state.currentValue = state.currentValue === undefined ||  state.currentValue === null ? '' : state.currentValue;
             
+            if (typeof step.validation !== 'undefined' && step.validation.includes('email')) {
+                if (!validateEmail(state.currentValue)) {
+                    return {...state, currentStep: state.currentStep, error: 'Email is invalid'};
+                }
+            }
+
             if (step.required && (state.currentValue.length < 1) && ['input', 'single-choice'].includes(step.type)) {
                 return {...state, currentStep: state.currentStep, error: 'This field is required'};
             }
