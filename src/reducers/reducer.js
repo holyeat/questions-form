@@ -98,8 +98,13 @@ const initialState = Object.assign({}, {
 
 
             if (nextStepNumber === step.total) {
-                submitForm(window.userId, submitStateTransformer(state)).then(() => {
-                    window.location.href = window.config.lastStep;
+                submitForm(window.userId, submitStateTransformer(state)).then((response) => {
+                    let baseUrl = window.config.lastStep;
+                    if (response.token.length > 1) {
+                        baseUrl +=  '&token=' . response.token;
+                    }
+
+                    window.location.href = baseUrl;
                 });
                 return {...state, 'isLoaded': false, 'stopApp': true};
             }
@@ -173,8 +178,13 @@ const initialState = Object.assign({}, {
             };
             let nextStepNumber2 = state.currentStep + 1;
             if (nextStepNumber2 === step.total) {
-                submitForm(window.userId, submitStateTransformer(state)).then(() => {
-                    window.location.href = window.config.lastStep;
+                submitForm(window.userId, submitStateTransformer(state)).then((response) => {
+                    let baseUrl = window.config.lastStep;
+                    if (response.token.length > 1) {
+                        baseUrl +=  '&token=' . response.token;
+                    }
+
+                    window.location.href = baseUrl;
                 });
                 return {...state, 'isLoaded': false, 'stopApp': true, 'isScrollHeader': true};
             }
