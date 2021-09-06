@@ -8,6 +8,28 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+function submit(state) {
+    submitForm(window.userId, submitStateTransformer(state)).then(response => {
+        if (typeof response !== 'object' || response === null) {
+            return ;
+        }
+
+        if (typeof response === 'undefined' || !response) {
+            return ;
+        }
+        if (typeof response.token === 'undefined') {
+            return ;
+        }
+
+        let baseUrl = window.config.lastStep;
+        if (response.token.length > 1) {
+            baseUrl +=  '&token=' + response.token;
+        }
+
+        window.location.href = baseUrl;
+    });
+}
+
 
 const initialState = Object.assign({}, {
     'currentStep': 0,
@@ -98,14 +120,7 @@ const initialState = Object.assign({}, {
 
 
             if (nextStepNumber === step.total) {
-                submitForm(window.userId, submitStateTransformer(state)).then((response) => {
-                    let baseUrl = window.config.lastStep;
-                    if (response.token.length > 1) {
-                        baseUrl +=  '&token=' . response.token;
-                    }
-
-                    window.location.href = baseUrl;
-                });
+                submit(state);
                 return {...state, 'isLoaded': false, 'stopApp': true};
             }
 
@@ -178,14 +193,7 @@ const initialState = Object.assign({}, {
             };
             let nextStepNumber2 = state.currentStep + 1;
             if (nextStepNumber2 === step.total) {
-                submitForm(window.userId, submitStateTransformer(state)).then((response) => {
-                    let baseUrl = window.config.lastStep;
-                    if (response.token.length > 1) {
-                        baseUrl +=  '&token=' . response.token;
-                    }
-
-                    window.location.href = baseUrl;
-                });
+                submit(state);
                 return {...state, 'isLoaded': false, 'stopApp': true, 'isScrollHeader': true};
             }
 
