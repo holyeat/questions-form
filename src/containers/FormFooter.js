@@ -20,11 +20,20 @@ class FormFooter extends React.Component
         this.props.parent.clearForm();
     }
 
+    clearAll()
+    {
+        if (window.config.mode !== 'crossfill')  {
+            return <a className="form__footer-text clear-all" onClick={this.clearForm.bind(this)} href="#" style={{'color': 'red'}}>Clear all answers</a>;
+        }
+
+        return <a className="form__footer-text clear-all" target="_blank" href="/">Learn more...</a>;
+    }
+
     render()
     {
         return                 <div  className="form__footer">
 
-        <a className="form__footer-text clear-all" onClick={this.clearForm.bind(this)} href="#" style={{'color': 'red'}}>Clear all answers</a>
+        {this.clearAll()}
         <a className="form__btn" onClick={this.submit.bind(this)}>Next</a>
         </div>;
     }
