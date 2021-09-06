@@ -26,7 +26,8 @@ class FormFooter extends React.Component
             return <a className="form__footer-text clear-all" onClick={this.clearForm.bind(this)} href="#" style={{'color': 'red'}}>Clear all answers</a>;
         }
 
-        return <a className="form__footer-text clear-all" target="_blank" href="/">Learn more...</a>;
+        return '';
+        // return <a className="form__footer-text clear-all" target="_blank" href="/">Learn more...</a>;
     }
 
     render()

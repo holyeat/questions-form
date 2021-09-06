@@ -22,7 +22,7 @@ function submit(state) {
         }
 
         let baseUrl = window.config.lastStep;
-        if (response.token.length > 1) {
+        if (response.token !== null && response.token.length > 1) {
             baseUrl +=  '&token=' + response.token;
         }
 
