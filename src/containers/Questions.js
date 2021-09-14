@@ -48,7 +48,7 @@ class Questions extends React.Component {
 
 
         let questionsList = window.config;
-        let currentStep = this.props.state.getState().steps[this.props.state.getState().currentStep];
+        let currentStep = this.getCurrentStep();
         this.currentStep = currentStep;
         console.log(currentStep);
 
@@ -71,6 +71,11 @@ class Questions extends React.Component {
             <a href={window.config.nextStepUrl} className="form__footer-text" style={{'maxWidth': "120px"}}>Fill the form later</a>
 
         </form>
+    }
+
+    getCurrentStep()
+    {
+        return this.props.state.getState().steps[this.props.state.getState().currentStep];
     }
 
     clearForm()

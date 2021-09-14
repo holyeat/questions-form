@@ -30,12 +30,28 @@ class FormFooter extends React.Component
         // return <a className="form__footer-text clear-all" target="_blank" href="/">Learn more...</a>;
     }
 
+    getButtonName() {
+        let currentValue = this.props.parent.currentValue();
+        let isRequired = this.getCurrentStep().required;
+        if (currentValue.length < 1 && !isRequired) {
+            return 'Skip';
+        }
+
+
+        return 'Next';
+    }
+
+    getCurrentStep()
+    {
+        return this.props.step;
+    }
+
     render()
     {
         return                 <div  className="form__footer">
 
         {this.clearAll()}
-        <a className="form__btn" onClick={this.submit.bind(this)}>Next</a>
+        <a className="form__btn" onClick={this.submit.bind(this)}>{this.getButtonName()}</a>
         </div>;
     }
 }
