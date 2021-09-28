@@ -33,7 +33,7 @@ class FormFooter extends React.Component
     getButtonName() {
         let currentValue = this.props.parent.currentValue();
         let isRequired = this.getCurrentStep().required;
-        if (currentValue.length < 1 && !isRequired) {
+        if ((currentValue.length < 1 || currentValue.length == 0) && !isRequired) {
             return 'Skip';
         }
 
