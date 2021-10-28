@@ -1,5 +1,6 @@
 {
     "require": {
-        "aws/aws-sdk-php": "^3.0.0"
+        "aws/aws-sdk-php": "^3.0.0",
+        "devcoder-xyz/php-dotenv": "^1.1"
     }
 }
