@@ -1,0 +1,5 @@
+{
+    "require": {
+        "devcoder-xyz/php-dotenv": "^1.1"
+    }
+}
