@@ -126,7 +126,7 @@ export default function appReducer(state = initialState, action) {
             }
 
             let nextStep = state.steps[nextStepNumber];
-            //let doubleNextStep = state.steps[nextStepNumber + 1];
+
             if (state.answers[nextStepNumber] === undefined) {
                 state.currentValue = {
                     'input': '',
@@ -141,19 +141,7 @@ export default function appReducer(state = initialState, action) {
             if (state.answers[nextStepNumber] !== undefined && state.answers[nextStepNumber].length > 0) {
                 state.currentValue = state.answers[nextStepNumber];
             }
-            // if (nextStep.type === 'redirect' && !nextStep.approxGoalGraphShowed) {
-            //     // state.currentValue = {
-            //     //     'input': '',
-            //     //     'single-choice': [],
-            //     //     'multiple-choice': [],
-            //     //     'numeric': doubleNextStep.predefinedValue !== undefined ? doubleNextStep.predefinedValue : 0,
-            //     //     'phone_number': '',
-            //     // }[doubleNextStep.type];
-            //     // state = { ...state, currentStep: nextStepNumber + 1, error: '', 'isScrollHeader': true };
-            //     // nextStep.approxGoalGraphShowed = true;
-            //     // saveState('form', window.userId, state);
-            //     window.location.href = nextStep.href;
-            // }
+           
 
             if (nextStep.type === 'redirect') {
                 state = {
@@ -166,11 +154,6 @@ export default function appReducer(state = initialState, action) {
                 saveState('form', window.userId, state).then(response => window.location.href = nextStep.href);
                 return state;
             }
-            // if (currentStepRem.redirectAfter) {
-            //     state = { ...state, currentStep: nextStepNumber, error: '', 'isScrollHeader': true };
-            //     saveState('form', window.userId, state);
-            //     window.location.href = currentStepRem.href;
-            // }
             state = { ...state, currentStep: nextStepNumber, error: '', 'isScrollHeader': true };
             saveState('form', window.userId, state);
             return state;
