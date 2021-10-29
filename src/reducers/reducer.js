@@ -115,19 +115,18 @@ export default function appReducer(state = initialState, action) {
             if (step.type === 'phone_number' && state.currentValue.includes('unconfirmed-')) {
                 return { ...state, currentStep: state.currentStep };
             }
-            
+
             let nextStepNumber = state.currentStep + 1;
             console.log(nextStepNumber, state.currentStep, state);
             state.answers[state.currentStep] = state.currentValue;
 
-            
             if (nextStepNumber === step.total) {
                 submit(state);
                 return { ...state, 'isLoaded': false, 'stopApp': true };
             }
 
             let nextStep = state.steps[nextStepNumber];
-
+            //let doubleNextStep = state.steps[nextStepNumber + 1];
             if (state.answers[nextStepNumber] === undefined) {
                 state.currentValue = {
                     'input': '',
@@ -138,18 +137,34 @@ export default function appReducer(state = initialState, action) {
                 }[nextStep.type];
             }
 
-            if (nextStep.type === 'redirect' && !nextStep.approxGoalGraphShowed) {
-                nextStep.approxGoalGraphShowed = true;
-                state.answers[state.currentStep] = state.currentValue;
-                state = { ...state, currentStep: nextStepNumber + 1, error: '', 'isScrollHeader': true};
-                saveState('form', window.userId, state);
-                window.location.href = nextStep.href;
-            }
-
             console.log(state.answers[nextStepNumber]);
             if (state.answers[nextStepNumber] !== undefined && state.answers[nextStepNumber].length > 0) {
                 state.currentValue = state.answers[nextStepNumber];
             }
+            // if (nextStep.type === 'redirect' && !nextStep.approxGoalGraphShowed) {
+            //     // state.currentValue = {
+            //     //     'input': '',
+            //     //     'single-choice': [],
+            //     //     'multiple-choice': [],
+            //     //     'numeric': doubleNextStep.predefinedValue !== undefined ? doubleNextStep.predefinedValue : 0,
+            //     //     'phone_number': '',
+            //     // }[doubleNextStep.type];
+            //     // state = { ...state, currentStep: nextStepNumber + 1, error: '', 'isScrollHeader': true };
+            //     // nextStep.approxGoalGraphShowed = true;
+            //     // saveState('form', window.userId, state);
+            //     window.location.href = nextStep.href;
+            // }
+
+            if (nextStep.type === 'redirect') {
+                state = { ...state, currentStep: nextStepNumber + 1, error: '', 'isScrollHeader': true};
+                saveState('form', window.userId, state);
+                window.location.href = nextStep.href;
+            }
+            // if (currentStepRem.redirectAfter) {
+            //     state = { ...state, currentStep: nextStepNumber, error: '', 'isScrollHeader': true };
+            //     saveState('form', window.userId, state);
+            //     window.location.href = currentStepRem.href;
+            // }
             state = { ...state, currentStep: nextStepNumber, error: '', 'isScrollHeader': true };
             saveState('form', window.userId, state);
             return state;
