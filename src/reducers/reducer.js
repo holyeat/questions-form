@@ -156,9 +156,15 @@ export default function appReducer(state = initialState, action) {
             // }
 
             if (nextStep.type === 'redirect') {
-                state = { ...state, currentStep: nextStepNumber + 1, error: '', 'isScrollHeader': true};
-                saveState('form', window.userId, state);
-                window.location.href = nextStep.href;
+                state = {
+                    ...state,
+                    currentStep: nextStepNumber + 1,
+                    error: '',
+                    isScrollHeader: true,
+                    currentValue: '',
+                };
+                saveState('form', window.userId, state).then(response => window.location.href = nextStep.href);
+                return state;
             }
             // if (currentStepRem.redirectAfter) {
             //     state = { ...state, currentStep: nextStepNumber, error: '', 'isScrollHeader': true };
