@@ -138,10 +138,16 @@ export default function appReducer(state = initialState, action) {
             }
 
             console.log(state.answers[nextStepNumber]);
-            if (state.answers[nextStepNumber] !== undefined && state.answers[nextStepNumber].length > 0) {
+            if (state.answers[nextStepNumber] !== undefined 
+                && state.answers[nextStepNumber] !== null  
+                && state.answers[nextStepNumber].length > 0) {
                 state.currentValue = state.answers[nextStepNumber];
             }
            
+
+            //write bubble sort for the state.currentValue by the keys
+                        
+
 
             if (nextStep.type === 'redirect') {
                 state = {
@@ -166,6 +172,9 @@ export default function appReducer(state = initialState, action) {
             }
 
             let stepNumber = state.currentStep - 1;
+            if (state.steps[stepNumber].type === 'redirect') {
+                stepNumber = stepNumber - 1;
+            }
 
             return { ...state, currentStep: stepNumber, currentValue: state.answers[stepNumber], error: '', 'isScrollHeader': true };
             break;
