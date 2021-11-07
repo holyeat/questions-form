@@ -143,19 +143,26 @@ export default function appReducer(state = initialState, action) {
                 && state.answers[nextStepNumber].length > 0) {
                 state.currentValue = state.answers[nextStepNumber];
             }
-           
-
-            //write bubble sort for the state.currentValue by the keys
-                        
+                                   
 
 
             if (nextStep.type === 'redirect') {
+
+                let currentValueRedirect;
+                nextStepNumber = nextStepNumber + 1;
+                if (state.answers[nextStepNumber] !== undefined && state.answers[nextStepNumber] !== null) {
+                    currentValueRedirect = state.answers[nextStepNumber];
+                } else {
+                    currentValueRedirect = nextStep.predefinedValue;
+                }
+
+                state.answers[nextStepNumber] = '';
                 state = {
                     ...state,
-                    currentStep: nextStepNumber + 1,
+                    currentStep: nextStepNumber,
                     error: '',
                     isScrollHeader: true,
-                    currentValue: '',
+                    currentValue: currentValueRedirect,
                 };
                 saveState('form', window.userId, state).then(response => window.location.href = nextStep.href);
                 return state;
@@ -167,6 +174,7 @@ export default function appReducer(state = initialState, action) {
             if (state.currentStep === 0) {
                 return state;
             }
+
             if (state.currentValue !== null && state.currentValue.length > 0) {
                 state.answers[state.currentStep] = state.currentValue;
             }

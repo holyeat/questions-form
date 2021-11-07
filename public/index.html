@@ -69,14 +69,6 @@ window.config = {
             "validation": ["email"]
           },
           {
-            "type": "redirect",
-            "placeholder": "",
-            "name": "prediction_graph",
-            "required": false,
-            "href": "http://localhost:3000/test-22"
-          },
-
-          {
             "type": "input",
             "title": "Please, specify your full name",
             "placeholder": "",
@@ -266,76 +258,6 @@ window.config = {
         "questions": [
           {
             "type": "single-choice",
-            "title": "Do you have any problems with the thyroid gland? If yes, please specify",
-            "required": true,
-            "placeholder": "No",
-            "name": "thyroid_gland",
-            "variants": [
-              {
-                "value": "No"
-              },
-              {
-                "title": "Yes",
-                "value": null,
-                "custom": true,
-                "placeholder": ""
-              }
-            ]
-          },
-          {
-            "type": "single-choice",
-            "title": "Have you been diagnosed with diseases of the gastrointestinal tract? If yes, please specify",
-            "required": true,
-            "name": "gastrointestinal",
-            "variants": [
-              {
-                "value": "No"
-              },
-              {
-                "title": "Yes",
-                "value": null,
-                "custom": true,
-                "placeholder": ""
-              }
-            ]
-          },
-          {
-            "type": "single-choice",
-            "title": "Do you have any food allergies? If yes, please specify?",
-            "required": true,
-            "name": "allergies",
-            "variants": [
-              {
-                "value": "No"
-              },
-              {
-                "title": "Yes",
-                "value": null,
-                "custom": true,
-                "placeholder": ""
-              }
-            ]
-          },
-          {
-            "type": "single-choice",
-            "placeholder": "No",
-            "title": "Have you been diagnosed with diabetes? If yes, could you please indicate the type",
-            "required": true,
-            "name": "diabetes",
-            "variants": [
-              {
-                "value": "No"
-              },
-              {
-                "title": "Yes",
-                "value": null,
-                "custom": true,
-                "placeholder": ""
-              }
-            ]
-          },
-          {
-            "type": "single-choice",
             "placeholder": "No",
             "title": "Are there any other health-related issues we should be aware of?",
             "required": false,
@@ -372,7 +294,7 @@ window.config = {
             "placeholder": "",
             "name": "prediction_graph",
             "required": false,
-            "href": "http://localhost:3000"
+            "href": "http://localhost:9141/"
           },
           {
             "type": "single-choice",
