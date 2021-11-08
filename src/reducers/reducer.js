@@ -153,10 +153,10 @@ export default function appReducer(state = initialState, action) {
                 if (state.answers[nextStepNumber] !== undefined && state.answers[nextStepNumber] !== null) {
                     currentValueRedirect = state.answers[nextStepNumber];
                 } else {
-                    currentValueRedirect = nextStep.predefinedValue;
+                    currentValueRedirect = nextStep.predefinedValue !== undefined ? nextStep.predefinedValue : '';
                 }
 
-                state.answers[nextStepNumber] = '';
+                state.answers[nextStepNumber-1] = '';
                 state = {
                     ...state,
                     currentStep: nextStepNumber,
