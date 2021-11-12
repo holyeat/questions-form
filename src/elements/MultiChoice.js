@@ -106,7 +106,7 @@ class MultiChoice extends React.Component
                             return <div className="from__group-radio">
                                 <input  checked={variant.checked}  type="checkbox" value={variant.value} name={variant.title} id={variant.value}/>
                                 <label onClick={() => this.handleOnClick(variant)} htmlFor={variant.title}>{variant.custom !== undefined ? variant.title : variant.value}</label>
-                                <input onChange={this.handleChange} value={variant.value ?? ''} style={(variant.showMyVariant !== undefined && variant.showMyVariant !== false) ? {"display":'block'} : {'display': 'none'}} type="text" placeholder="My variant"/>
+                                <input onChange={this.handleChange} value={variant.value ?? ''} style={(variant.showMyVariant !== undefined && variant.showMyVariant !== false) ? {"display":'block'} : {'display': 'none'}} type="text" placeholder={window.constants["FRONTFORM_MYVARIANT"]}/>
 
                         
                             </div>

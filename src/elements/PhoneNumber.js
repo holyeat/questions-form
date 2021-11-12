@@ -66,7 +66,7 @@ class PhoneNumber extends React.Component
 
         step.title='Confirmation code';
         step.placeholder = '1111';
-        step.description = 'We have sent you a confirmation to ' + this.props.parent.getCurrentValue().replace('unconfirmed-', '');
+        step.description = window.constants["FRONTFORM_WE_HAVE_SENT_CONFCODE_TO"] + this.props.parent.getCurrentValue().replace('unconfirmed-', '');
 
         return <div className="form__main">
 
@@ -76,7 +76,7 @@ class PhoneNumber extends React.Component
             <input ref={(input) => { this.nameInput = input;  if (input !== null) {input.focus();}}}  type="text" onChange={this.handleChangeConfirmationCode} placeholder={step.placeholder} value={this.confirmationCode}/>
         </div>
         <br/>
-        <a href="#" style={{'textDecoration': 'none', 'color': 'green'}} onClick={this.changePhoneNumber}>Change phone number</a>
+        <a href="#" style={{'textDecoration': 'none', 'color': 'green'}} onClick={this.changePhoneNumber}>{window.constants["FRONTFORM_CHANGE_NUMBER"]}</a>
 
 
         <Error error={this.props.parent.getError()} />

@@ -27,7 +27,7 @@ class FormHeader extends React.Component
 
         return <div className="form__header" ref={(input) => { this.nameInput = input;  if (input !== null && this.props.parent.isScrollHeader()) {input.scrollIntoView();}}}>
         <div className="form__header-title">
-            <h3>Step {this.props.step.sectionNumber}:<span>{this.props.step.section}</span>
+            <h3>{window.constants["FRONTFORM_STEP"]} {this.props.step.sectionNumber}:<span>{this.props.step.section}</span>
             
             </h3>
         </div>
@@ -44,7 +44,7 @@ class FormHeader extends React.Component
 
         <div className="form__header-line"></div>
         <div className="form__header-bottom">
-            <a className="form__arrow active" href="#" onClick={this.previousStep.bind(this)}>back</a>
+            <a className="form__arrow active" href="#" onClick={this.previousStep.bind(this)}>{window.constants["FRONTFORM_BACK"]}</a>
             <div className="from__header-number"><span>{this.props.step.questionNumber}</span>/{this.props.step.total}</div>
         </div>
     </div>;
