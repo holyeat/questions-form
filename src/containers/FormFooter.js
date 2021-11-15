@@ -22,18 +22,18 @@ class FormFooter extends React.Component
 
     clearAll()
     {
-            return <a className="form__footer-text clear-all" onClick={this.clearForm.bind(this)} href="#" style={{'color': 'red'}}>{window.constants["FRONTFORM_CLEAR_ALL_ANSWERS"]}</a>;
+            return <a className="form__footer-text clear-all" onClick={this.clearForm.bind(this)} href="#" style={{'color': 'red'}}>{window.constantsOn ? "FRONTFORM_CLEAR_ALL_ANSWERS" : window.constants["FRONTFORM_CLEAR_ALL_ANSWERS"]}</a>;
     }
 
     getButtonName() {
         let currentValue = this.props.parent.currentValue();
         let isRequired = this.getCurrentStep().required;
         if ((currentValue.length < 1 || currentValue == 0) && !isRequired) {
-            return window.constants["FRONTFORM_SKIP"];
+            return window.constantsOn ? "FRONTFORM_SKIP" : window.constants["FRONTFORM_SKIP"];
         }
 
 
-        return window.constants["FRONTFORM_NEXT"];
+        return window.constantsOn ? "FRONTFORM_NEXT" : window.constants["FRONTFORM_NEXT"];
     }
 
     getCurrentStep()

@@ -99,7 +99,7 @@ class SingleChoice extends React.Component
                                 <label onClick={() => this.handleOnClick(variant)} htmlFor={i + 't'}>{variant.custom !== undefined ? variant.title : variant.value}</label>
                         
 
-                                <input onChange={this.handleChange} value={this.props.parent.getCurrentValue() ?? ''} style={(variant.showMyVariant !== undefined && variant.showMyVariant !== false) ? {"display":'block'} : {'display': 'none'}} type="text" placeholder={variant.placeholder ? variant.placeholder : window.constants["FRONTFORM_MYVARIANT"]}/>
+                                <input onChange={this.handleChange} value={this.props.parent.getCurrentValue() ?? ''} style={(variant.showMyVariant !== undefined && variant.showMyVariant !== false) ? {"display":'block'} : {'display': 'none'}} type="text" placeholder={variant.placeholder ? variant.placeholder : (window.constantsOn ? "FRONTFORM_MYVARIANT" : window.constants["FRONTFORM_MYVARIANT"])}/>
 
                             </div>
                         })}

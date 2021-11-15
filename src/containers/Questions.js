@@ -55,10 +55,10 @@ class Questions extends React.Component {
 
         if (this.props.state.getState().showClearState) {
             return <form className="form"  style={{'textAlign':'center'}} onSubmit={this.onFormSubmit.bind(this)}>
-                <h2>{window.constants["FRONTFORM_CONFIRM_CLEARING_ALL_ANSWERS"]}</h2>
+                <h2>{window.constantsOn ? "FRONTFORM_CONFIRM_CLEARING_ALL_ANSWERS" : window.constants["FRONTFORM_CONFIRM_CLEARING_ALL_ANSWERS"]}</h2>
                 <div className="confirm-container">
-                    <a href="#" onClick={this.confirmClean.bind(this)} className="form__btn2 form__btn2-red">{window.constants["FRONTFORM_CONFIRM"]}</a>
-                    <a href="#" onClick={this.cancelClean.bind(this)} className="form__btn2">{window.constants["FRONTFORM_CANCEL"]}</a>
+                    <a href="#" onClick={this.confirmClean.bind(this)} className="form__btn2 form__btn2-red">{window.constantsOn ? "FRONTFORM_CONFIRM" : window.constants["FRONTFORM_CONFIRM"]}</a>
+                    <a href="#" onClick={this.cancelClean.bind(this)} className="form__btn2">{window.constantsOn ? "FRONTFORM_CANCEL" : window.constants["FRONTFORM_CANCEL"]}</a>
                 </div>
 
                 </form>
@@ -68,7 +68,7 @@ class Questions extends React.Component {
             <FormHeader step={currentStep} parent={this}/>
             <CurrentQuestion state={this.props.state} step={currentStep}/>
             <FormFooter step={currentStep} parent={this} state={this.props.state}/>
-            <a href={window.config.nextStepUrl} className="form__footer-text" style={{'maxWidth': "120px"}}>{window.constants["FRONTFORM_FILL_THE_FORM_LATER"]}</a>
+            <a href={window.config.nextStepUrl} className="form__footer-text" style={{'maxWidth': "120px"}}>{window.constantsOn ? "FRONTFORM_FILL_THE_FORM_LATER" : window.constants["FRONTFORM_FILL_THE_FORM_LATER"]}</a>
 
         </form>
     }
@@ -114,7 +114,7 @@ class Questions extends React.Component {
 
             let parsedNumber = parsePhoneNumber(number, window.countryCode);
             if (parsedNumber === undefined || !parsedNumber.isValid()) {
-                this.props.state.dispatch({ type: 'error', 'error': window.constants["FRONTFORM_INCORRECT_PHONENUMBER"]});
+                this.props.state.dispatch({ type: 'error', 'error': (window.constantsOn ? "FRONTFORM_INCORRECT_PHONENUMBER" : window.constants["FRONTFORM_INCORRECT_PHONENUMBER"])});
                 return ;
             }
             number = parsedNumber.getURI().replace('tel:', '');
@@ -150,7 +150,7 @@ class Questions extends React.Component {
                         this.props.state.dispatch({ type: 'addVerifiedNumbers', 'verifiedNumber': number});
 
                     } else {
-                        this.props.state.dispatch({'type': 'error', 'error': window.constants["FRONTFORM_INCORRECT_CODE"]});
+                        this.props.state.dispatch({'type': 'error', 'error': (window.constantsOn ? "FRONTFORM_INCORRECT_CODE" : window.constants["FRONTFORM_INCORRECT_CODE"])});
                     }
                 }
             );
