@@ -27,7 +27,7 @@ class FormHeader extends React.Component
 
         return <div className="form__header" ref={(input) => { this.nameInput = input;  if (input !== null && this.props.parent.isScrollHeader()) {input.scrollIntoView();}}}>
         <div className="form__header-title">
-            <h3>{window.constantOn ? "FRONTFORM_STEP" : window.constants["FRONTFORM_STEP"]} {this.props.step.sectionNumber}:<span>{this.props.step.section}</span>
+            <h3>{window.constantsOn ? "FRONTFORM_STEP" : window.constants["FRONTFORM_STEP"]} {this.props.step.sectionNumber}:<span>{this.props.step.section}</span>
             
             </h3>
         </div>
