@@ -91,25 +91,25 @@ export default function appReducer(state = initialState, action) {
 
             if (typeof step.validation !== 'undefined' && step.validation.includes('email')) {
                 if (!validateEmail(state.currentValue)) {
-                    return { ...state, currentStep: state.currentStep, error: 'Email is invalid' };
+                    return { ...state, currentStep: state.currentStep, error: window.constantsOn ? "FRONTFORM_INVALID_EMAIL" : window.constants["FRONTFORM_INVALID_EMAIL"] };
                 }
             }
 
             if (step.required && (state.currentValue.length < 1) && ['input', 'single-choice'].includes(step.type)) {
-                return { ...state, currentStep: state.currentStep, error: 'This field is required' };
+                return { ...state, currentStep: state.currentStep, error: window.constantsOn ? "FRONTFORM_FIELD_REQUIRED" : window.constants["FRONTFORM_FIELD_REQUIRED"] };
             }
 
 
             if (step.required && step.type === 'multiple-choice' && (state.currentValue === null || state.currentValue.length === 0)) {
-                return { ...state, currentStep: state.currentStep, error: 'This field is required' };
+                return { ...state, currentStep: state.currentStep, error: window.constantsOn ? "FRONTFORM_FIELD_REQUIRED" : window.constants["FRONTFORM_FIELD_REQUIRED"] };
             }
 
             if (step.required && step.type === 'phone_number' && state.currentValue === 0) {
-                return { ...state, currentStep: state.currentStep, error: 'This field is required' };
+                return { ...state, currentStep: state.currentStep, error: window.constantsOn ? "FRONTFORM_FIELD_REQUIRED" : window.constants["FRONTFORM_FIELD_REQUIRED"] };
             }
 
             if (step.required && step.type === 'numeric' && state.currentValue === 0) {
-                return { ...state, currentStep: state.currentStep, error: 'This field is required' };
+                return { ...state, currentStep: state.currentStep, error: window.constantsOn ? "FRONTFORM_FIELD_REQUIRED" : window.constants["FRONTFORM_FIELD_REQUIRED"]};
             }
 
             if (step.type === 'phone_number' && state.currentValue.includes('unconfirmed-')) {
