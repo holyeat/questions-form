@@ -25,7 +25,7 @@ class FormHeader extends React.Component
             percent = 0;
         }
 
-        return <div className="form__header" ref={(input) => { this.nameInput = input;  if (input !== null && this.props.parent.isScrollHeader()) {input.scrollIntoView();}}}>
+        return <div className="form__header">
         <div className="form__header-title">
             <h3>Step {this.props.step.sectionNumber}:<span>{this.props.step.section}</span>
             

@@ -64,7 +64,22 @@ class Questions extends React.Component {
                 </form>
         }
 
-        return <form className="form"  onSubmit={this.onFormSubmit.bind(this)}>
+        const scroll = {
+            behavior: "auto",
+            block: "start",
+            inline: "center"
+        };
+
+        if (this.isScrollHeader()) {
+            const id = 'main-form';
+            const yOffset = -100; 
+            const element = document.getElementById(id);
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            
+            window.scrollTo({top: y, behavior: 'smooth'});
+        }
+            
+        return <form className="form"  id="main-form" onSubmit={this.onFormSubmit.bind(this)}>
             <FormHeader step={currentStep} parent={this}/>
             <CurrentQuestion state={this.props.state} step={currentStep}/>
             <FormFooter step={currentStep} parent={this} state={this.props.state}/>
