@@ -74,7 +74,7 @@ class Questions extends React.Component {
             const id = 'main-form';
             const yOffset = -100; 
             const element = document.getElementById(id);
-            if (element.getBoundingClientRect() !== null) {
+            if (element !== null && element.getBoundingClientRect() !== null) {
                 const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
             
                 window.scrollTo({top: y, behavior: 'smooth'});    
