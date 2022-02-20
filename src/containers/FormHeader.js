@@ -27,7 +27,7 @@ class FormHeader extends React.Component
 
         return <div className="form__header">
         <div className="form__header-title">
-            <h3>Step {this.props.step.sectionNumber}:<span>{this.props.step.section}</span>
+            <h3>{window.constants.FRONTFORM_STEP ?? 'Step'} {this.props.step.sectionNumber}:<span>{this.props.step.section}</span>
             
             </h3>
         </div>
