@@ -36,11 +36,11 @@ class FormFooter extends React.Component
         let currentValue = this.props.parent.currentValue();
         let isRequired = this.getCurrentStep().required;
         if ((currentValue.length < 1 || currentValue == 0) && !isRequired) {
-            return window.constants.FRONTFORM_NEXT ?? 'Next';
+            return window.constants.FRONTFORM_SKIP ?? 'Skip';
         }
 
 
-        return window.constants.FRONTFORM_SKIP ?? 'Skip';
+        return window.constants.FRONTFORM_NEXT ?? 'Next';
     }
 
     getCurrentStep()

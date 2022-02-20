@@ -20,7 +20,7 @@ class FormTitle extends React.Component
         return <div>
             <div className="form__main-text">
             <ul>
-                {this.props.step.required ? <li><span>*</span> - Required</li> : ''}
+                {this.props.step.required ? <li><span>*</span> - {window.constants.FRONTFORM_REQUIRED}</li> : ''}
             </ul>
         </div>
             <div className="form__main-title">
