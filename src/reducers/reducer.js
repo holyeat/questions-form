@@ -84,6 +84,7 @@ export default function appReducer(state = initialState, action) {
             break;
 
         case "nextStep":
+            const fieldRequiredError = window.constants.FRONTFORM_FIELD_REQUIRED ?? 'This field is required';
 
             step = state.steps[state.currentStep];
 
@@ -96,20 +97,20 @@ export default function appReducer(state = initialState, action) {
             }
 
             if (step.required && (state.currentValue.length < 1) && ['input', 'single-choice'].includes(step.type)) {
-                return { ...state, currentStep: state.currentStep, error: 'This field is required' };
+                return { ...state, currentStep: state.currentStep, error: fieldRequiredError};
             }
 
 
             if (step.required && step.type === 'multiple-choice' && (state.currentValue === null || state.currentValue.length === 0)) {
-                return { ...state, currentStep: state.currentStep, error: 'This field is required' };
+                return { ...state, currentStep: state.currentStep, error: fieldRequiredError};
             }
 
             if (step.required && step.type === 'phone_number' && state.currentValue === 0) {
-                return { ...state, currentStep: state.currentStep, error: 'This field is required' };
+                return { ...state, currentStep: state.currentStep, error: fieldRequiredError};
             }
 
             if (step.required && step.type === 'numeric' && state.currentValue === 0) {
-                return { ...state, currentStep: state.currentStep, error: 'This field is required' };
+                return { ...state, currentStep: state.currentStep, error: fieldRequiredError};
             }
 
             if (step.type === 'phone_number' && state.currentValue.includes('unconfirmed-')) {
