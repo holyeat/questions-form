@@ -23,7 +23,9 @@ class FormFooter extends React.Component
     clearAll()
     {
         // if (window.config.mode !== 'crossfill')  {
-            return <a className="form__footer-text clear-all" onClick={this.clearForm.bind(this)} href="#" style={{'color': 'red'}}>Clear all answers</a>;
+            return <a className="form__footer-text clear-all" onClick={this.clearForm.bind(this)} href="#" style={{'color': 'red'}}>
+                {window.constants.FRONTFORM_CLEAR_ALL_ANSWERS ?? 'Clear all answers'}
+            </a>;
         // }
 
         // return '';
@@ -34,11 +36,11 @@ class FormFooter extends React.Component
         let currentValue = this.props.parent.currentValue();
         let isRequired = this.getCurrentStep().required;
         if ((currentValue.length < 1 || currentValue == 0) && !isRequired) {
-            return 'Skip';
+            return window.constants.FRONTFORM_NEXT ?? 'Next';
         }
 
 
-        return 'Next';
+        return window.constants.FRONTFORM_SKIP ?? 'Skip';
     }
 
     getCurrentStep()

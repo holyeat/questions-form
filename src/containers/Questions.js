@@ -85,8 +85,7 @@ class Questions extends React.Component {
             <FormHeader step={currentStep} parent={this}/>
             <CurrentQuestion state={this.props.state} step={currentStep}/>
             <FormFooter step={currentStep} parent={this} state={this.props.state}/>
-            <a href={window.config.nextStepUrl} className="form__footer-text" style={{'maxWidth': "120px"}}>Fill the form later</a>
-
+            {/* <a href={window.config.nextStepUrl} className="form__footer-text" style={{'maxWidth': "120px"}}>Fill the form later</a> */}
         </form>
     }
 
